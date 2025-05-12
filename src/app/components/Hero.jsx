@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -13,6 +14,10 @@ const fadeUp = {
 };
 
 const Hero = ({ heading, subheading, ratings }) => {
+  const router = useRouter();
+  const handleButtonClick = () => {
+    router.push('/comingSoon');
+  };
   return (
     <main className="mt-24 px-6 py-20 md:px-12 lg:px-24 flex flex-col lg:flex-row justify-between gap-12">
       {/* Left Section */}
@@ -64,6 +69,7 @@ const Hero = ({ heading, subheading, ratings }) => {
             className="mt-4 px-6 py-4 text-white rounded-full w-[220px] bg-gradient-to-r from-purple-500 to-blue-700 hover:from-black hover:to-black transition-all"
             variants={fadeUp}
             custom={0.4}
+            onClick={handleButtonClick}
           >
             Get Started
           </motion.button>

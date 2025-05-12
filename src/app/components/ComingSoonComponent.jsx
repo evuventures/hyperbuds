@@ -5,7 +5,7 @@ import Image from 'next/image';
 const Cspage = () => {
   return (
 <>
-  <Image src="/images/background.png" alt="" className="w-full h-auto object-cover" />
+  <Image src="/images/background.png" alt="" width={1204} height={1204} className="w-full h-auto object-cover" />
   <div className="content absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6 md:px-12">
     <div className="text mb-6">
       <h2 className="text-3xl md:text-4xl font-bold mb-4">We’re Launching Soon!</h2>
