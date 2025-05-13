@@ -15,7 +15,7 @@ function Navbar() {
           alt="Logo"
           width={192} 
           height={48} 
-          className="w-48 h-auto"
+          className="w-32 lg:w-48 h-auto"
         />
       </div>
 

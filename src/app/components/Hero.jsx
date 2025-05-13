@@ -19,7 +19,7 @@ const Hero = ({ heading, subheading, ratings }) => {
     router.push('/comingSoon');
   };
   return (
-    <main className="mt-24 px-6 py-20 md:px-12 lg:px-24 flex flex-col lg:flex-row justify-between gap-12">
+    <main className="mt-16 lg:mt-24 px-6 py-20 md:px-12 lg:px-24 flex flex-col lg:flex-row justify-between gap-12">
       {/* Left Section */}
       <motion.div
         className="w-full lg:w-[55%]"

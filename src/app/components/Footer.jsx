@@ -11,7 +11,7 @@ const Footer = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       viewport={{ once: false, amount: 0.2 }}
-      className="bg-black text-white px-4 sm:px-8 lg:px-[124px] py-[124px]"
+      className="bg-black text-white px-4 sm:px-8 lg:px-[124px] py-[64px] lg:py-[124px]"
     >
       {/* Newsletter Section */}
       <motion.div
@@ -49,7 +49,7 @@ const Footer = () => {
         </form>
       </motion.div>
 
-      <hr className="my-20 border-gray-700" />
+      <hr className="my-10 lg:my-20 border-gray-700" />
 
       {/* Footer Info Section */}
       <div className="flex flex-col lg:flex-row justify-between gap-8">
