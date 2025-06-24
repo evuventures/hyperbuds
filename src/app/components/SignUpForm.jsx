@@ -1,16 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import { FaFacebook, FaGoogle, FaTiktok } from 'react-icons/fa';
-import PhoneInput from 'react-phone-input-2'
+import { Eye, EyeOff, Mail, Lock, User, Phone, Facebook, Chrome } from 'lucide-react'
 
 const SignUpForm = () => {
-   const pathname = usePathname()
-   const isSignup = pathname === '/signup'
-
    const [form, setForm] = useState({
       firstName: '',
       lastName: '',
@@ -21,6 +14,10 @@ const SignUpForm = () => {
       confirmPassword: '',
       remindMe: false,
    })
+
+   const [showPassword, setShowPassword] = useState(false)
+   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+   const [focusedField, setFocusedField] = useState('')
 
    const handleChange = (e) => {
       const { name, value, type, checked } = e.target
@@ -36,228 +33,293 @@ const SignUpForm = () => {
          ...form,
          mode: 'signup'
       })
-      // Add logic to call your backend or authentication service here
    }
 
-   return (
-      <main className='flex items-center justify-center gap-10 p-3 lg:mx-5 lg:my-10'>
-
-         <div className='flex flex-col items-center md:w-[60%] lg:max-w-[40%]'>
-
-            <div className='flex flex-col mb-10 items-start w-full px-5'>
-               <h2 className='text-3xl md:text-4xl font-medium lg:text-5xl text-black'>
-                  Sign up
-               </h2>
-            </div>
-
-            <form onSubmit={handleSubmit} className="bg-white px-5 w-full">
-
-               <div className="w-full mb-2">
-                  <label htmlFor="firstName" className="block mb-2 text-sm md:text-base text-black">First Name</label>
-                  <input
-                     id="firstName"
-                     name="firstName"
-                     placeholder="First Name"
-                     value={form.firstName}
-                     onChange={handleChange}
-                     className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg focus:border-[#A259FF]/50 focus:outline-none transition placeholder:text-xs"
-                     required
-                  />
-               </div>
-
-               <div className="w-full mb-2">
-                  <label htmlFor="lastName" className="block mb-2 text-sm md:text-base text-black">Last Name</label>
-                  <input
-                     id="lastName"
-                     name="lastName"
-                     placeholder="Last Name"
-                     value={form.lastName}
-                     onChange={handleChange}
-                     className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg placeholder:text-xs focus:border-[#A259FF]/50 focus:outline-none transition"
-                     required
-                  />
-               </div>
-
-               <div className="w-full mb-2">
-                  <label htmlFor="username" className="block mb-2 text-sm md:text-base text-black">Username</label>
-                  <input
-                     id="username"
-                     name="username"
-                     placeholder="Username"
-                     value={form.username}
-                     onChange={handleChange}
-                     className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg focus:border-[#A259FF]/50 focus:outline-none transition placeholder:text-xs"
-                     required
-                  />
-               </div>
-
-               <div className="w-full mb-2">
-                  <label htmlFor="email" className="block mb-2 text-sm md:text-base text-black">Email</label>
-                  <div className="relative w-full">
-                     <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="your email@gmail.com"
-                        value={form.email}
-                        onChange={handleChange}
-                        className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg focus:border-[#A259FF]/50 focus:outline-none transition placeholder:text-xs"
-                        required
-                     />
-                     <Image
-                        src="/images/email-icon.svg"
-                        alt="email"
-                        width={24}
-                        height={24}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
-                     />
-                  </div>
-               </div>
-
-               <div className="w-full mb-2">
-                  <label htmlFor="phone" className="block mb-2 text-sm md:text-base text-black">Phone Number</label>
-                  <PhoneInput
-                     country={'us'}
-                     value={form.phone}
-                     onChange={(phone) => handleChange({ target: { name: 'phone', value: phone } })}
-                     inputProps={{
-                        name: 'phone',
-                        required: true,
-                        id: 'phone',
-                     }}
-                     containerClass="w-full border border-[#71797E] rounded-lg focus-within:border-[#A259FF] transition-colors bg-white placeholder:text-xs"
-                     inputClass="!w-full !h-12 !bg-white !outline-none !border-none !rounded-lg"
-                     buttonClass="custom-phone-button"
-                  />
-               </div>
-
-
-
-               <div className="w-full mb-2">
-                  <label htmlFor="password" className="block mb-2 text-sm md:text-base text-black">Password</label>
-                  <div className="relative w-full">
-                     <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        value={form.password}
-                        onChange={handleChange}
-                        className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg focus:border-[#A259FF]/50 focus:outline-none transition  placeholder:text-xs"
-                        required
-                     />
-                     <Image
-                        src="/images/password-icon.svg"
-                        alt="password"
-                        width={24}
-                        height={24}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
-                     />
-                  </div>
-               </div>
-
-               <div className="w-full mb-2">
-                  <label htmlFor="confirmPassword" className="block mb-2 text-sm md:text-base text-black">Confirm Password</label>
-                  <div className="relative w-full">
-                     <input
-                        id="confirmPassword"
-                        name="confirmPassword"
-                        type="password"
-                        placeholder="Confirm Password"
-                        value={form.confirmPassword}
-                        onChange={handleChange}
-                        className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg focus:border-[#A259FF]/50 focus:outline-none transition placeholder:text-xs"
-                        required
-                     />
-                     <Image
-                        src="/images/password-icon.svg"
-                        alt="confirm password"
-                        width={24}
-                        height={24}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
-                     />
-                  </div>
-               </div>
-
-
-
-               <div className="flex items-center justify-between mb-3">
-                  <label className="flex items-center text-sm md:text-base text-gray-600 cursor-pointer">
-                     <input
-                        type="checkbox"
-                        name="remindMe"
-                        checked={form.remindMe}
-                        onChange={handleChange}
-                        className="mr-2 h-4 w-4 scale-110 accent-[#A259FF] cursor-pointer"
-                     />
-                     Remind me
-                  </label>
-                  <Link href="#" className="text-red-600 text-base">
-                     Forgot password?
-                  </Link>
-               </div>
-
-               <div className='flex flex-col items-center gap-4'>
-                  <button
-                     type="submit"
-                     className="w-full py-3 text-white rounded-lg hover:opacity-90 transition gap-3 max-w-[320px] mt-4 bg-gradient-to-r from-[#A259FF] to-[#0011FF] cursor-pointer text-xl font-medium"
-                  >
-                     Create Account
-                  </button>
-
-                  <p className="text-center text-sm font-normal">
-                     Already have an account?{' '}
-                     <Link href="/auth/signin" className="text-blue-600 hover:underline cursor-pointer">
-                        Sign in
-                     </Link>
-                  </p>
-               </div>
-            </form>
-
-            <div className='flex flex-col gap-5'>
-
-               <div className='flex items-center justify-center mt-3'>
-                  <div className=' border-t border-[#C3C3C3] w-full'></div>
-                  <p className='text-sm text-center w-full font-normal text-[#00000099]'>
-                     Continue with
-                  </p>
-                  <div className=' border-t border-[#C3C3C3] w-full'></div>
-               </div>
-
-               <div className='grid grid-cols-3 gap-5 justify-items-center mx-5'>
-                  <div className='border border-gray-200 w-25 h-15 items-center flex justify-center text-3xl cursor-pointer'>
-                     <Link href='https://www.facebook.com/'>
-                        <FaFacebook />
-                     </Link>
-                  </div>
-                  <div className='border border-gray-200 w-25 h-15 items-center flex justify-center text-3xl text-[#1A73E8] cursor-pointer'>
-                     <Link href='https://www.google.com/'>
-                        <FaGoogle />
-                     </Link>
-                  </div>
-                  <div className='border border-gray-200 w-25 h-15 items-center flex justify-center text-3xl text-[#FF0000] cursor-pointer'>
-                     <Link href='https://www.tiktok.com/'>
-                        < FaTiktok />
-                     </Link>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-
-         <div className="hidden lg:block relative w-[660px] h-[800px]">
-            <Image
-               src="/images/signup.jpg"
-               alt="Signup"
-               width={660}
-               height={1024}
-               className="absolute top-0 left-0 w-full h-full object-cover"
+   const InputField = ({ 
+      id, 
+      name, 
+      type = 'text', 
+      placeholder, 
+      value, 
+      onChange, 
+      icon: Icon, 
+      required = false,
+      showToggle = false,
+      showValue = false,
+      onToggle = null 
+   }) => (
+      <div className="relative group">
+         <div className={`
+            absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/20 to-blue-500/20 opacity-0 
+            transition-opacity duration-300 blur-sm
+            ${focusedField === name ? 'opacity-100' : ''}
+         `} />
+         <div className="relative">
+            <input
+               id={id}
+               name={name}
+               type={showToggle ? (showValue ? 'text' : 'password') : type}
+               placeholder={placeholder}
+               value={value}
+               onChange={onChange}
+               onFocus={() => setFocusedField(name)}
+               onBlur={() => setFocusedField('')}
+               className={`
+                  w-full h-14 pl-12 pr-12 bg-white/10 backdrop-blur-sm border border-white/20 
+                  rounded-xl text-gray-800 placeholder-gray-500 transition-all duration-300
+                  focus:bg-white/20 focus:border-purple-400/50 focus:outline-none focus:ring-2 
+                  focus:ring-purple-400/20 hover:border-white/30
+                  ${focusedField === name ? 'shadow-lg shadow-purple-500/10' : ''}
+               `}
+               required={required}
             />
+            <Icon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 transition-colors duration-300" />
+            {showToggle && (
+               <button
+                  type="button"
+                  onClick={onToggle}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
+               >
+                  {showValue ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+               </button>
+            )}
+         </div>
+      </div>
+   )
+
+   return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4">
+         {/* Background decorations */}
+         <div className="fixed inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-300/30 rounded-full blur-3xl" />
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300/30 rounded-full blur-3xl" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-200/20 rounded-full blur-3xl" />
          </div>
 
+         <div className="relative z-10 flex w-full max-w-6xl mx-auto">
+            {/* Form Section */}
+            <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+               <div className="w-full max-w-md">
+                  {/* Header */}
+                  <div className="text-center mb-8">
+                     <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl mb-6 shadow-lg shadow-purple-500/25">
+                        <User className="w-8 h-8 text-white" />
+                     </div>
+                     <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent mb-2">
+                        Create Account
+                     </h1>
+                     <p className="text-gray-600">Join us and start your journey today</p>
+                  </div>
 
-      </main>
+                  {/* Social Login */}
+                  <div className="flex gap-3 mb-8">
+                     <button className="flex-1 flex items-center justify-center gap-3 h-12 bg-white/60 backdrop-blur-sm border border-white/30 rounded-xl hover:bg-white/80 transition-colors duration-300 group">
+                        <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center">
+                           <Facebook className="w-3 h-3 text-white" />
+                        </div>
+                        <span className="text-sm font-medium text-gray-700">Facebook</span>
+                     </button>
+                     <button className="flex-1 flex items-center justify-center gap-3 h-12 bg-white/60 backdrop-blur-sm border border-white/30 rounded-xl hover:bg-white/80 transition-colors duration-300 group">
+                        <Chrome className="w-5 h-5 text-red-500" />
+                        <span className="text-sm font-medium text-gray-700">Google</span>
+                     </button>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="flex items-center mb-8">
+                     <div className="flex-1 h-px bg-gradient-to-r from-transparent to-gray-300" />
+                     <span className="px-4 text-sm text-gray-500 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+                        or continue with email
+                     </span>
+                     <div className="flex-1 h-px bg-gradient-to-l from-transparent to-gray-300" />
+                  </div>
+
+                  {/* Form */}
+                  <div className="space-y-6">
+                     <div className="grid grid-cols-2 gap-4">
+                        <div>
+                           <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                           <InputField
+                              id="firstName"
+                              name="firstName"
+                              placeholder="John"
+                              value={form.firstName}
+                              onChange={handleChange}
+                              icon={User}
+                              required
+                           />
+                        </div>
+                        <div>
+                           <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                           <InputField
+                              id="lastName"
+                              name="lastName"
+                              placeholder="Doe"
+                              value={form.lastName}
+                              onChange={handleChange}
+                              icon={User}
+                              required
+                           />
+                        </div>
+                     </div>
+
+                     <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                        <InputField
+                           id="username"
+                           name="username"
+                           placeholder="johndoe"
+                           value={form.username}
+                           onChange={handleChange}
+                           icon={User}
+                           required
+                        />
+                     </div>
+
+                     <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <InputField
+                           id="email"
+                           name="email"
+                           type="email"
+                           placeholder="john@example.com"
+                           value={form.email}
+                           onChange={handleChange}
+                           icon={Mail}
+                           required
+                        />
+                     </div>
+
+                     <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                        <InputField
+                           id="phone"
+                           name="phone"
+                           type="tel"
+                           placeholder="+1 (555) 000-0000"
+                           value={form.phone}
+                           onChange={handleChange}
+                           icon={Phone}
+                           required
+                        />
+                     </div>
+
+                     <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                        <InputField
+                           id="password"
+                           name="password"
+                           placeholder="Create a strong password"
+                           value={form.password}
+                           onChange={handleChange}
+                           icon={Lock}
+                           showToggle
+                           showValue={showPassword}
+                           onToggle={() => setShowPassword(!showPassword)}
+                           required
+                        />
+                     </div>
+
+                     <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                        <InputField
+                           id="confirmPassword"
+                           name="confirmPassword"
+                           placeholder="Confirm your password"
+                           value={form.confirmPassword}
+                           onChange={handleChange}
+                           icon={Lock}
+                           showToggle
+                           showValue={showConfirmPassword}
+                           onToggle={() => setShowConfirmPassword(!showConfirmPassword)}
+                           required
+                        />
+                     </div>
+
+                     <div className="flex items-center justify-between">
+                        <label className="flex items-center cursor-pointer group">
+                           <input
+                              type="checkbox"
+                              name="remindMe"
+                              checked={form.remindMe}
+                              onChange={handleChange}
+                              className="sr-only"
+                           />
+                           <div className={`
+                              w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200
+                              ${form.remindMe 
+                                 ? 'bg-gradient-to-r from-purple-500 to-blue-500 border-transparent' 
+                                 : 'border-gray-300 bg-white group-hover:border-purple-400'
+                              }
+                           `}>
+                              {form.remindMe && (
+                                 <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                 </svg>
+                              )}
+                           </div>
+                           <span className="ml-3 text-sm text-gray-600">Remember me</span>
+                        </label>
+                        <button type="button" className="text-sm text-purple-600 hover:text-purple-500 transition-colors">
+                           Forgot password?
+                        </button>
+                     </div>
+
+                     <button
+                        type="submit"
+                        onClick={handleSubmit}
+                        className="w-full h-14 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/25 active:scale-[0.98]"
+                     >
+                        Create Account
+                     </button>
+
+                     <p className="text-center text-sm text-gray-600">
+                        Already have an account?{' '}
+                        <button type="button" className="text-purple-600 hover:text-purple-500 font-medium transition-colors">
+                           Sign in
+                        </button>
+                     </p>
+                  </div>
+               </div>
+            </div>
+
+            {/* Image Section */}
+            <div className="hidden lg:block w-1/2 relative">
+               <div className="absolute inset-4 bg-gradient-to-br from-purple-600/90 to-blue-600/90 rounded-3xl overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20" />
+                  <div className="relative h-full flex items-center justify-center p-12">
+                     <div className="text-center text-white">
+                        <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-8">
+                           <div className="w-12 h-12 bg-white/30 rounded-xl flex items-center justify-center">
+                              <User className="w-6 h-6 text-white" />
+                           </div>
+                        </div>
+                        <h2 className="text-3xl font-bold mb-4">Welcome to our community</h2>
+                        <p className="text-lg text-white/80 mb-8">
+                           Join thousands of users who trust us with their digital journey. 
+                           Experience seamless integration and powerful features.
+                        </p>
+                        <div className="grid grid-cols-3 gap-4 text-center">
+                           <div>
+                              <div className="text-2xl font-bold">50K+</div>
+                              <div className="text-sm text-white/70">Active Users</div>
+                           </div>
+                           <div>
+                              <div className="text-2xl font-bold">99.9%</div>
+                              <div className="text-sm text-white/70">Uptime</div>
+                           </div>
+                           <div>
+                              <div className="text-2xl font-bold">24/7</div>
+                              <div className="text-sm text-white/70">Support</div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
    )
 }
 
-export default SignUpForm;
+export default SignUpForm
