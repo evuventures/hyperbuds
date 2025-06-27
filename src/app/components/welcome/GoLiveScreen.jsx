@@ -19,7 +19,7 @@ const GoLiveScreen = ({ onNext, onBack }) => {
         <div className="mb-6 sm:mb-12">
           <div className="w-[clamp(12rem,20vw,20rem)] mx-auto">
             <img
-              src="/images/mike.png"
+              src="/images/onboarding/mike.png"
               alt="Mike Icon"
               className="w-full h-auto object-contain mike-gradient transition-all duration-300 ease-in-out hover:scale-105"
             />

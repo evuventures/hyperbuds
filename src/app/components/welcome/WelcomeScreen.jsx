@@ -9,7 +9,7 @@ const WelcomeScreen = ({ onNext, onSkip }) => {
         <div className="mb-6 sm:mb-12">
           <div className="w-16 h-16 sm:w-28 sm:h-28">
             <img
-              src="/images/Group 49.png"
+              src="/images/onboarding/Group 49.png"
               alt="Welcome Icon"
               className="w-full h-full object-contain transition-all duration-300 ease-in-out hover:scale-105"
             />

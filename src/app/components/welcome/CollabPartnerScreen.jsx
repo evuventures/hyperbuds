@@ -20,7 +20,7 @@ const CollabPartnerScreen = ({ onNext, onSkip, onBack }) => {
         <div className="mb-6 sm:mb-12">
           <div className="w-16 h-16 sm:w-28 sm:h-28">
             <img 
-              src="/images/handshake.png" 
+              src="/images/onboarding/handshake.png" 
               alt="Collab Partner Icon" 
               className="w-full h-full object-contain transition-all duration-300 ease-in-out hover:scale-105" 
             />
