@@ -16,7 +16,7 @@ const OtpPassword = ({ onComplete, isLoading }) => {
 
   useEffect(() => {
     if (otp.length === 6 && !isLoading) {
-      // handleSubmit(); // Uncomment this if you want auto-submit
+      handleSubmit(); 
     }
   }, [otp, isLoading]);
 
