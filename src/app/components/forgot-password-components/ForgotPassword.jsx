@@ -1,68 +1,111 @@
+'use client'
+
+import React, { useState } from 'react'
 import Image from 'next/image'
-import React from 'react'
+import Link from 'next/link' 
 
-
-
+import { useAuth } from '../../context/AuthContext'; 
+import { useRouter } from 'next/navigation'; 
 
 const ForgotPassword = () => {
-   return (
-      <section className='h-screen flex flex-col items-center justify-center gap-10 m-5'>
+  const [email, setEmail] = useState('');
+  const [localMessage, setLocalMessage] = useState(null);
 
-         <div className='flex flex-col items-center justify-center md:min-w-xl'>
+  const { sendPasswordResetEmail, loading: authLoading } = useAuth(); 
+  const router = useRouter();
 
-            <div className='flex flex-col items-center justify-center max-w-[90%] mb-5 gap-5'>
-               <div className=' rounded-full p-5 bg-[#EBDBFF] w-[70px] h-[70px] items-center flex  justify-center'>
-                  <Image src="/images/key-icon.svg" alt="signup successful" width={12} height={23} />
-               </div>
-               <h2 className='text-xl md:text-2xl lg:text-3xl font-medium'>
-                  Forgot Password?
-               </h2>
-               <p className='text-sm md:text-lg text-black lg:text-xl font-normal'>
-                  Enter your email address to receieve a verification code
-               </p>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLocalMessage(null);
+
+    if (!email.trim()) {
+      setLocalMessage({ type: 'error', text: 'Please enter your email address.' });
+      return;
+    }
+
+
+    const result = await sendPasswordResetEmail(email);
+
+    if (result.success) {
+      setLocalMessage({ type: 'success', text: result.message || 'Verification code sent to your email.' });
+      
+      router.push(`/forgot-password/verify-code?email=${email}`); 
+    } else {
+      setLocalMessage({ type: 'error', text: result.error || 'Failed to send verification code.' });
+    }
+  };
+
+  return (
+    <section className='h-screen flex flex-col items-center justify-center gap-10 m-5'>
+
+      <div className='flex flex-col items-center justify-center md:min-w-xl'>
+
+        <div className='flex flex-col items-center justify-center max-w-[90%] mb-5 gap-5'>
+          <div className=' rounded-full p-5 bg-[#EBDBFF] w-[70px] h-[70px] items-center flex justify-center'>
+            <Image src="/images/key-icon.svg" alt="key icon" width={32} height={32} /> {/* Adjusted width/height for better icon display */}
+          </div>
+          <h2 className='text-xl md:text-2xl lg:text-3xl font-medium'>
+            Forgot Password?
+          </h2>
+          <p className='text-sm md:text-lg text-black lg:text-xl font-normal'>
+            Enter your email address to receive a verification code
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className='items-center justify-center w-full flex flex-col'>
+
+          <div className="w-full mb-4">
+            <label htmlFor="email" className=" mb-2 text-sm md:text-base text-black">Email</label>
+            <div className="relative ">
+              <input
+                id="email"
+                type="email"
+                placeholder="your email@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg focus:border-[#A259FF]/50 focus:outline-none transition placeholder:text-xs"
+                required
+                disabled={authLoading}
+              />
+              <Image
+                src="/images/email-icon.svg"
+                alt="email icon"
+                width={24}
+                height={24}
+                className="absolute right-3 top-1/2 -translate-y-1/2"
+              />
             </div>
+          </div>
 
-            <div className='items-center justify-center w-full flex flex-col'>
+          {localMessage && ( 
+            <p className={`text-center text-sm font-medium mb-4 ${
+              localMessage.type === 'error' ? 'text-red-600' : 'text-green-600'
+            }`}>
+              {localMessage.text}
+            </p>
+          )}
 
-               <div className="w-full mb-4">
-                  <label htmlFor="email" className=" mb-2 text-sm md:text-base text-black">Email</label>
-                  <div className="relative ">
-                     <input
-                        id="email"
-                        type="email"
-                        placeholder="your email@gmail.com"
-                        // value={email}
-                        // onChange={(e) => setEmail(e.target.value)}
-                        className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg focus:border-[#A259FF]/50 focus:outline-none transition placeholder:text-xs"
-                        required
-                     />
-                     <Image
-                        src="/images/email-icon.svg"
-                        alt="email"
-                        width={24}
-                        height={24}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
-                     />
-                  </div>
-               </div>
+          <button
+            type="submit"
+            className="w-full py-3 text-white rounded-lg hover:opacity-90 transition gap-3 mt-2 bg-gradient-to-r from-[#A259FF] to-[#0011FF] cursor-pointer text-xl font-medium"
+            disabled={authLoading} 
+          >
+            {authLoading ? 'Sending...' : 'Send'}
+          </button>
 
-               <button className="w-full py-3 text-white rounded-lg hover:opacity-90 transition gap-3 mt-2 bg-gradient-to-r from-[#A259FF] to-[#0011FF] cursor-pointer text-xl font-medium">
-                  Send
-               </button>
+          <Link href="/login" className='flex items-center justify-center gap-2 h-fit my-6'> {/* Use Link for navigation */}
+            <Image src="/images/right-arrow.svg" alt="back to login"
+              width={20} height={12} className='rotate-180' />
+            <p className='text-black text-base md:text-xl font-normal underline'>
+              Back to login
+            </p>
+          </Link>
 
-               <div className='flex items-center justify-center gap-2 h-fit my-6'>
-                  <Image src="/images/right-arrow.svg" alt="signup successful"
-                     width={20} height={12} className='rotate-180' />
-                  <p className='text-black text-base md:text-xl font-normal underline'>
-                     Back to login
-                  </p>
-               </div>
+        </form>
+      </div >
 
-            </div>
-         </div >
-
-      </section >
-   )
+    </section >
+  )
 }
 
 export default ForgotPassword

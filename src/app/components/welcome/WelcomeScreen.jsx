@@ -2,7 +2,7 @@
 
 const WelcomeScreen = ({ onNext, onSkip }) => {
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 sm:px-8 lg:px-16 text-center pt-8 lg:pt-12">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center mx-4 sm:mx-8 lg:px-16 text-center pt-8 lg:pt-12">
       {/* Content */}
       <div className="flex-1 flex flex-col items-center justify-center max-w-[64rem]">
         {/* Icon */}
@@ -11,13 +11,13 @@ const WelcomeScreen = ({ onNext, onSkip }) => {
             <img
               src="/images/onboarding/Group 49.png"
               alt="Welcome Icon"
-              className="w-full h-full object-contain transition-all duration-300 ease-in-out hover:scale-105"
+              className="w-auto h-full object-contain transition-all duration-300 ease-in-out hover:scale-105"
             />
           </div>
         </div>
 
         {/* Title */}
-        <h1 className="font-bold text-black-5000 leading-tight text-center transition-all duration-300 whitespace-nowrap text-3xl sm:text-5xl mb-4 sm:mb-10">
+        <h1 className="font-bold text-black leading-tight text-center transition-all duration-300 text-2xl md:text-5xl md:min-w-2xl mb-4 sm:mb-10">
           Welcome to HyperBuds
         </h1>
 

@@ -28,12 +28,12 @@ const CollabPartnerScreen = ({ onNext, onSkip, onBack }) => {
         </div>
 
         {/* Title */}
-     <h1 className="font-bold text-gray-900 leading-tight text-center transition-all duration-300 text-3xl sm:text-5xl lg:whitespace-nowrap mb-4 sm:mb-10">
+     <h1 className="font-bold text-gray-900 leading-tight text-center transition-all duration-300 text-3xl sm:text-5xl lg:whitespace-nowrap mb-4 md:min-w-2xl sm:mb-10">
   Find Your Perfect Collab Partner
 </h1>
 
         {/* Description */}
-        <p className="text-gray-900 leading-snug text-center transition-all duration-300 text-base sm:text-xl mb-6 sm:mb-12 max-w-prose">
+        <p className="text-gray-900 leading-snug text-center transition-all duration-300 text-base sm:text-xl mb-6 sm:mb-12 md:min-w-xl lg:min-w-3xl">
           Our AI Matchmaker intelligently suggests ideal collaborators based on your niche, audience, and goals.
         </p>
 

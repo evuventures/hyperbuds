@@ -35,7 +35,7 @@ const GoLiveScreen = ({ onNext, onBack }) => {
 
         {/* Description */}
         <p
-          className="text-black-500 leading-snug text-center transition-all duration-300 text-base sm:text-xl mb-6 sm:mb-12 max-w-prose lg:whitespace-nowrap"
+          className="text-black-500 leading-snug text-center transition-all duration-300 text-base sm:text-xl mb-6 sm:mb-12 lg:min-w-3xl"
         >
           Jump into our basic Duet Studio to co-stream, record, and produce amazing content with your new partners.
         </p>
