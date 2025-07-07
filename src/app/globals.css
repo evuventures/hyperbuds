@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+.primary-text {
+  color: #A259FF;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -18,4 +22,3 @@
     --foreground: #ededed;
   }
 }
-
