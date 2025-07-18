@@ -3,32 +3,50 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import { FaFacebook, FaGoogle, FaTiktok } from 'react-icons/fa';
-
-
+import { usePathname, useRouter } from 'next/navigation'
+import { FaFacebook, FaGoogle, FaTiktok } from 'react-icons/fa'
 
 const SignInForm = () => {
    const pathname = usePathname()
+   const router = useRouter()
    const isSignup = pathname === '/signup'
 
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
    const [stayLoggedIn, setStayLoggedIn] = useState(false)
+   const [error, setError] = useState<string | null>(null)
+   const [loading, setLoading] = useState(false)
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault()
-      console.log({
-         mode: isSignup ? 'signup' : 'login',
-         email,
-         password,
-         stayLoggedIn
-      })
-      // Add logic to call your backend or authentication service here
+      setLoading(true)
+      setError(null)
+
+      try {
+         const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password, stayLoggedIn }),
+         })
+
+         const data = await res.json()
+
+         if (!res.ok) {
+            setError(data.message || 'Login failed')
+         } else {
+            console.log('✅ Logged in:', data)
+            router.push('/dashboard')
+         }
+      } catch (err) {
+         console.error('Login error:', err)
+         setError('Something went wrong.')
+      } finally {
+         setLoading(false)
+      }
    }
 
    return (
-      <main className='flex items-center justify-center gap-5 m-10 lg:mr-10 lg:mt-10  md:mt-10 lg:m-0'>
+      <main className='flex items-center justify-center gap-5 m-10 lg:mr-10 lg:mt-10 md:mt-10 lg:m-0'>
 
          <div className='hidden lg:block'>
             <Image src={'/images/signin.png'} alt="Logo" width={600} height={100}
@@ -108,12 +126,17 @@ const SignInForm = () => {
                   </Link>
                </div>
 
+               {error && (
+                  <p className="text-red-600 text-sm mb-4 text-center">{error}</p>
+               )}
+
                <div className='flex flex-col items-center gap-4'>
                   <button
                      type="submit"
+                     disabled={loading}
                      className="w-full py-3 text-white rounded-lg hover:opacity-90 transition gap-3 max-w-[320px] mt-8 bg-gradient-to-r from-[#A259FF] to-[#0011FF] cursor-pointer text-xl font-medium"
                   >
-                     {isSignup ? 'Create Account' : 'Sign In'}
+                     {loading ? 'Signing in...' : isSignup ? 'Create Account' : 'Sign In'}
                   </button>
 
                   <p className="text-center text-sm font-normal">
@@ -135,9 +158,8 @@ const SignInForm = () => {
                   </p>
                </div>
             </form>
-            {/* links  */}
-            <div className='flex flex-col gap-5'>
 
+            <div className='flex flex-col gap-5'>
                <div className='flex items-center justify-center mt-5'>
                   <div className=' border-t border-[#C3C3C3] w-full'></div>
                   <p className='text-sm text-center w-full font-normal text-[#00000099]'>
@@ -154,20 +176,16 @@ const SignInForm = () => {
                   </div>
                   <div className='border border-gray-200 w-25 h-15 items-center flex justify-center text-3xl text-[#1A73E8] cursor-pointer'>
                      <Link href='https://www.google.com/'>
-                        <FaGoogle className='' />
+                        <FaGoogle />
                      </Link>
                   </div>
                   <div className='border border-gray-200 w-25 h-15 items-center flex justify-center text-3xl text-[#FF0000] cursor-pointer'>
                      <Link href='https://www.tiktok.com/'>
-                        < FaTiktok />
+                        <FaTiktok />
                      </Link>
                   </div>
-                  <div>
-                  </div>
                </div>
-
             </div>
-
          </div>
       </main>
    )

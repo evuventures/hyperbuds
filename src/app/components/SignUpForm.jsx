@@ -1,263 +1,263 @@
 'use client'
 
-import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import { FaFacebook, FaGoogle, FaTiktok } from 'react-icons/fa';
-import PhoneInput from 'react-phone-input-2'
+import { useState, useEffect } from 'react'
+import InputField from './InputField'
+import { Mail, Lock, User, Phone, Facebook, Chrome, Loader2, CheckCircle } from 'lucide-react'
 
-const SignUpForm = () => {
-   const pathname = usePathname()
-   const isSignup = pathname === '/signup'
-
-   const [form, setForm] = useState({
-      firstName: '',
-      lastName: '',
-      username: '',
-      email: '',
-      phone: '',
-      password: '',
-      confirmPassword: '',
-      remindMe: false,
-   })
-
-   const handleChange = (e) => {
-      const { name, value, type, checked } = e.target
-      setForm((prev) => ({
-         ...prev,
-         [name]: type === 'checkbox' ? checked : value,
-      }))
-   }
-
-   const handleSubmit = (e) => {
-      e.preventDefault()
-      console.log({
-         ...form,
-         mode: 'signup'
-      })
-      // Add logic to call your backend or authentication service here
-   }
-
-   return (
-      <main className='flex items-center justify-center gap-10 p-3 lg:mx-5 lg:my-10'>
-
-         <div className='flex flex-col items-center md:w-[60%] lg:max-w-[40%]'>
-
-            <div className='flex flex-col mb-10 items-start w-full px-5'>
-               <h2 className='text-3xl md:text-4xl font-medium lg:text-5xl text-black'>
-                  Sign up
-               </h2>
-            </div>
-
-            <form onSubmit={handleSubmit} className="bg-white px-5 w-full">
-
-               <div className="w-full mb-2">
-                  <label htmlFor="firstName" className="block mb-2 text-sm md:text-base text-black">First Name</label>
-                  <input
-                     id="firstName"
-                     name="firstName"
-                     placeholder="First Name"
-                     value={form.firstName}
-                     onChange={handleChange}
-                     className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg focus:border-[#A259FF]/50 focus:outline-none transition placeholder:text-xs"
-                     required
-                  />
-               </div>
-
-               <div className="w-full mb-2">
-                  <label htmlFor="lastName" className="block mb-2 text-sm md:text-base text-black">Last Name</label>
-                  <input
-                     id="lastName"
-                     name="lastName"
-                     placeholder="Last Name"
-                     value={form.lastName}
-                     onChange={handleChange}
-                     className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg placeholder:text-xs focus:border-[#A259FF]/50 focus:outline-none transition"
-                     required
-                  />
-               </div>
-
-               <div className="w-full mb-2">
-                  <label htmlFor="username" className="block mb-2 text-sm md:text-base text-black">Username</label>
-                  <input
-                     id="username"
-                     name="username"
-                     placeholder="Username"
-                     value={form.username}
-                     onChange={handleChange}
-                     className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg focus:border-[#A259FF]/50 focus:outline-none transition placeholder:text-xs"
-                     required
-                  />
-               </div>
-
-               <div className="w-full mb-2">
-                  <label htmlFor="email" className="block mb-2 text-sm md:text-base text-black">Email</label>
-                  <div className="relative w-full">
-                     <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="your email@gmail.com"
-                        value={form.email}
-                        onChange={handleChange}
-                        className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg focus:border-[#A259FF]/50 focus:outline-none transition placeholder:text-xs"
-                        required
-                     />
-                     <Image
-                        src="/images/email-icon.svg"
-                        alt="email"
-                        width={24}
-                        height={24}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
-                     />
-                  </div>
-               </div>
-
-               <div className="w-full mb-2">
-                  <label htmlFor="phone" className="block mb-2 text-sm md:text-base text-black">Phone Number</label>
-                  <PhoneInput
-                     country={'us'}
-                     value={form.phone}
-                     onChange={(phone) => handleChange({ target: { name: 'phone', value: phone } })}
-                     inputProps={{
-                        name: 'phone',
-                        required: true,
-                        id: 'phone',
-                     }}
-                     containerClass="w-full border border-[#71797E] rounded-lg focus-within:border-[#A259FF] transition-colors bg-white placeholder:text-xs"
-                     inputClass="!w-full !h-12 !bg-white !outline-none !border-none !rounded-lg"
-                     buttonClass="custom-phone-button"
-                  />
-               </div>
-
-
-
-               <div className="w-full mb-2">
-                  <label htmlFor="password" className="block mb-2 text-sm md:text-base text-black">Password</label>
-                  <div className="relative w-full">
-                     <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        value={form.password}
-                        onChange={handleChange}
-                        className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg focus:border-[#A259FF]/50 focus:outline-none transition  placeholder:text-xs"
-                        required
-                     />
-                     <Image
-                        src="/images/password-icon.svg"
-                        alt="password"
-                        width={24}
-                        height={24}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
-                     />
-                  </div>
-               </div>
-
-               <div className="w-full mb-2">
-                  <label htmlFor="confirmPassword" className="block mb-2 text-sm md:text-base text-black">Confirm Password</label>
-                  <div className="relative w-full">
-                     <input
-                        id="confirmPassword"
-                        name="confirmPassword"
-                        type="password"
-                        placeholder="Confirm Password"
-                        value={form.confirmPassword}
-                        onChange={handleChange}
-                        className="w-full h-12 p-3 pr-10 border border-[#71797E] rounded-lg focus:border-[#A259FF]/50 focus:outline-none transition placeholder:text-xs"
-                        required
-                     />
-                     <Image
-                        src="/images/password-icon.svg"
-                        alt="confirm password"
-                        width={24}
-                        height={24}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
-                     />
-                  </div>
-               </div>
-
-
-
-               <div className="flex items-center justify-between mb-3">
-                  <label className="flex items-center text-sm md:text-base text-gray-600 cursor-pointer">
-                     <input
-                        type="checkbox"
-                        name="remindMe"
-                        checked={form.remindMe}
-                        onChange={handleChange}
-                        className="mr-2 h-4 w-4 scale-110 accent-[#A259FF] cursor-pointer"
-                     />
-                     Remind me
-                  </label>
-                  <Link href="#" className="text-red-600 text-base">
-                     Forgot password?
-                  </Link>
-               </div>
-
-               <div className='flex flex-col items-center gap-4'>
-                  <button
-                     type="submit"
-                     className="w-full py-3 text-white rounded-lg hover:opacity-90 transition gap-3 max-w-[320px] mt-4 bg-gradient-to-r from-[#A259FF] to-[#0011FF] cursor-pointer text-xl font-medium"
-                  >
-                     Create Account
-                  </button>
-
-                  <p className="text-center text-sm font-normal">
-                     Already have an account?{' '}
-                     <Link href="/auth/signin" className="text-blue-600 hover:underline cursor-pointer">
-                        Sign in
-                     </Link>
-                  </p>
-               </div>
-            </form>
-
-            <div className='flex flex-col gap-5'>
-
-               <div className='flex items-center justify-center mt-3'>
-                  <div className=' border-t border-[#C3C3C3] w-full'></div>
-                  <p className='text-sm text-center w-full font-normal text-[#00000099]'>
-                     Continue with
-                  </p>
-                  <div className=' border-t border-[#C3C3C3] w-full'></div>
-               </div>
-
-               <div className='grid grid-cols-3 gap-5 justify-items-center mx-5'>
-                  <div className='border border-gray-200 w-25 h-15 items-center flex justify-center text-3xl cursor-pointer'>
-                     <Link href='https://www.facebook.com/'>
-                        <FaFacebook />
-                     </Link>
-                  </div>
-                  <div className='border border-gray-200 w-25 h-15 items-center flex justify-center text-3xl text-[#1A73E8] cursor-pointer'>
-                     <Link href='https://www.google.com/'>
-                        <FaGoogle />
-                     </Link>
-                  </div>
-                  <div className='border border-gray-200 w-25 h-15 items-center flex justify-center text-3xl text-[#FF0000] cursor-pointer'>
-                     <Link href='https://www.tiktok.com/'>
-                        < FaTiktok />
-                     </Link>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-
-         <div className="hidden lg:block relative w-[660px] h-[800px]">
-            <Image
-               src="/images/signup.jpg"
-               alt="Signup"
-               width={660}
-               height={1024}
-               className="absolute top-0 left-0 w-full h-full object-cover"
-            />
-         </div>
-
-
-      </main>
-   )
+const VerifyEmail = ({ email }) => {
+  return (
+    <div className="text-center">
+      <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-6 shadow-lg shadow-green-500/25">
+        <Mail className="w-8 h-8 text-white" />
+      </div>
+      <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent mb-2">
+        Check Your Email
+      </h1>
+      <p className="text-gray-600 mb-8">
+        A verification link has been sent to
+      </p>
+      <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl mb-8">
+        <p className="text-blue-800 font-medium text-lg">{email}</p>
+      </div>
+      <div className="space-y-4 text-sm text-gray-600">
+        <p>Please check your email and click the verification link to activate your account.</p>
+        <p>Didn't receive the email? Check your spam folder or 
+          <button className="text-purple-600 hover:text-purple-500 font-medium ml-1 transition-colors">
+            resend verification email
+          </button>
+        </p>
+      </div>
+    </div>
+  )
 }
 
-export default SignUpForm;
+const SignUpForm = () => {
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    username: '',
+    email: '',
+    phone: '',
+    password: '',
+    confirmPassword: '',
+    remindMe: false,
+  })
+
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
+
+  // Pre-fill email if returning from verify page
+  useEffect(() => {
+    const savedEmail = sessionStorage.getItem('registeredEmail')
+    if (savedEmail) {
+      setForm((prev) => ({ ...prev, email: savedEmail }))
+    }
+  }, [])
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }))
+    if (error) setError('')
+  }
+
+  const validateForm = () => {
+    if (!form.firstName.trim()) return 'First name is required'
+    if (!form.lastName.trim()) return 'Last name is required'
+    if (!form.username.trim()) return 'Username is required'
+    if (!form.email.trim()) return 'Email is required'
+    if (!form.password) return 'Password is required'
+    if (form.password !== form.confirmPassword) return 'Passwords do not match'
+    if (form.password.length < 6) return 'Password must be at least 6 characters'
+    if (form.username.length < 3) return 'Username must be at least 3 characters'
+    if (form.username.includes('@')) return 'Username cannot be an email address'
+    if (!/^[a-zA-Z0-9_]+$/.test(form.username)) return 'Username can only contain letters, numbers, and underscores'
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(form.email)) return 'Please enter a valid email address'
+    return null
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const validationError = validateForm()
+    if (validationError) {
+      setError(validationError)
+      return
+    }
+
+    setIsLoading(true)
+    setError('')
+    setSuccess('')
+
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: form.firstName.trim(),
+          lastName: form.lastName.trim(),
+          username: form.username.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+          password: form.password,
+        }),
+      })
+
+      const data = await response.json()
+      console.log('Verify link:', data.verificationLink)
+      sessionStorage.setItem('verificationLink', data.verificationLink)
+      sessionStorage.setItem('registeredEmail', form.email.trim())
+
+      if (!response.ok) throw new Error(data.message || 'Registration failed')
+
+      setSuccess('Account created successfully! Please verify your email.')
+
+    } catch (err) {
+      setError(err.message || 'Something went wrong. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-300/30 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300/30 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-200/20 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative z-10 flex w-full max-w-6xl mx-auto">
+        <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+          <div className="w-full max-w-md">
+            {success ? (
+              <VerifyEmail email={form.email} />
+            ) : (
+              <>
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl mb-6 shadow-lg shadow-purple-500/25">
+                    <User className="w-8 h-8 text-white" />
+                  </div>
+                  <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent mb-2">
+                    Create Account
+                  </h1>
+                  <p className="text-gray-600">Join us and start your journey today</p>
+                </div>
+
+                {error && (
+                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+                    <p className="text-red-600 text-sm">{error}</p>
+                  </div>
+                )}
+
+                <div className="flex gap-3 mb-8">
+                  <button className="flex-1 flex items-center justify-center gap-3 h-12 bg-white/60 backdrop-blur-sm border border-white/30 rounded-xl hover:bg-white/80 transition-colors duration-300" disabled={isLoading}>
+                    <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center">
+                      <Facebook className="w-3 h-3 text-white" />
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">Facebook</span>
+                  </button>
+                  <button className="flex-1 flex items-center justify-center gap-3 h-12 bg-white/60 backdrop-blur-sm border border-white/30 rounded-xl hover:bg-white/80 transition-colors duration-300" disabled={isLoading}>
+                    <Chrome className="w-5 h-5 text-red-500" />
+                    <span className="text-sm font-medium text-gray-700">Google</span>
+                  </button>
+                </div>
+
+                <div className="flex items-center mb-8">
+                  <div className="flex-1 h-px bg-gradient-to-r from-transparent to-gray-300" />
+                  <span className="px-4 text-sm text-gray-500">or continue with email</span>
+                  <div className="flex-1 h-px bg-gradient-to-l from-transparent to-gray-300" />
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-2 gap-4">
+                    <InputField id="firstName" name="firstName" placeholder="John" value={form.firstName} onChange={handleChange} icon={User} required disabled={isLoading} />
+                    <InputField id="lastName" name="lastName" placeholder="Doe" value={form.lastName} onChange={handleChange} icon={User} required disabled={isLoading} />
+                  </div>
+                  <InputField id="username" name="username" placeholder="johndoe123" value={form.username} onChange={handleChange} icon={User} required disabled={isLoading} />
+                  <InputField id="email" name="email" type="email" autoComplete="email" placeholder="john@example.com" value={form.email} onChange={handleChange} icon={Mail} required disabled={isLoading} />
+                  <InputField id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" value={form.phone} onChange={handleChange} icon={Phone} disabled={isLoading} />
+                  <InputField id="password" name="password" type="password" autoComplete="new-password" placeholder="Create a strong password" value={form.password} onChange={handleChange} icon={Lock} showToggle showValue={showPassword} onToggle={() => setShowPassword(!showPassword)} required disabled={isLoading} />
+                  <InputField id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm your password" value={form.confirmPassword} onChange={handleChange} icon={Lock} showToggle showValue={showConfirmPassword} onToggle={() => setShowConfirmPassword(!showConfirmPassword)} required disabled={isLoading} />
+
+                  <div className="flex items-center justify-between">
+                    <label className="flex items-center cursor-pointer">
+                      <input type="checkbox" name="remindMe" checked={form.remindMe} onChange={handleChange} className="sr-only" disabled={isLoading} />
+                      <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${form.remindMe ? 'bg-gradient-to-r from-purple-500 to-blue-500 border-transparent' : 'border-gray-300 bg-white'}`}>
+                        {form.remindMe && (
+                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        )}
+                      </div>
+                      <span className="ml-3 text-sm text-gray-600">Remember me</span>
+                    </label>
+                    <button type="button" className="text-sm text-purple-600 hover:text-purple-500 transition-colors" disabled={isLoading}>Forgot password?</button>
+                  </div>
+
+                  <button type="submit" disabled={isLoading} className="w-full h-14 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/25 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Creating Account...
+                      </>
+                    ) : (
+                      'Create Account'
+                    )}
+                  </button>
+                  <p className="text-center text-sm text-gray-600">
+                    Already have an account?{' '}
+                    <button type="button" className="text-purple-600 hover:text-purple-500 font-medium transition-colors" disabled={isLoading}>
+                      Sign in
+                    </button>
+                  </p>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="hidden lg:block w-1/2 relative">
+          <div className="absolute inset-4 bg-gradient-to-br from-purple-600/90 to-blue-600/90 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20" />
+            <div className="relative h-full flex items-center justify-center p-12">
+              <div className="text-center text-white">
+                <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-8">
+                  <div className="w-12 h-12 bg-white/30 rounded-xl flex items-center justify-center">
+                    <User className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <h2 className="text-3xl font-bold mb-4">Welcome to our community</h2>
+                <p className="text-lg text-white/80 mb-8">
+                  Join thousands of users who trust us with their digital journey.
+                </p>
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="text-2xl font-bold">50K+</div>
+                    <div className="text-sm text-white/70">Active Users</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold">99.9%</div>
+                    <div className="text-sm text-white/70">Uptime</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold">24/7</div>
+                    <div className="text-sm text-white/70">Support</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default SignUpForm
