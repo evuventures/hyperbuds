@@ -1,17 +1,14 @@
-// lib/firebase-admin.ts
-import { cert, getApps, initializeApp } from 'firebase-admin/app';
-import { getAuth } from 'firebase-admin/auth';
+import { cert, getApps, initializeApp } from "firebase-admin/app";
+import { getAuth } from "firebase-admin/auth";
 
-const serviceAccount = {
+const credentials = {
   projectId: process.env.FIREBASE_PROJECT_ID!,
   clientEmail: process.env.FIREBASE_CLIENT_EMAIL!,
-  privateKey: process.env.FIREBASE_PRIVATE_KEY!.replace(/\\n/g, '\n'),
+  privateKey: process.env.FIREBASE_PRIVATE_KEY!.replace(/\n/g, "\n")
 };
 
 if (!getApps().length) {
-  initializeApp({
-    credential: cert(serviceAccount),
-  });
+  initializeApp({ credential: cert(credentials) });
 }
 
 export const adminAuth = getAuth();
