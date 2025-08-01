@@ -1,14 +1,12 @@
 import { cert, getApps, initializeApp } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 
-const credentials = {
-  projectId: process.env.FIREBASE_PROJECT_ID!,
-  clientEmail: process.env.FIREBASE_CLIENT_EMAIL!,
-  privateKey: process.env.FIREBASE_PRIVATE_KEY!.replace(/\n/g, "\n")
-};
+const serviceAccount = JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON!);
 
 if (!getApps().length) {
-  initializeApp({ credential: cert(credentials) });
+  initializeApp({
+    credential: cert(serviceAccount),
+  });
 }
 
 export const adminAuth = getAuth();
