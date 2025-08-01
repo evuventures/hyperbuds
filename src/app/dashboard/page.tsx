@@ -1,16 +1,19 @@
-// Updated /app/dashboard/page.tsx with cleaner imports
+// app/dashboard/page.tsx
+
+export const dynamic = 'force-dynamic'; 
+
 import { getCurrentUser } from '@/lib/auth-helpers';
 import { redirect } from 'next/navigation';
-import { 
-  Header, 
-  Sidebar, 
-  MainContent, 
-  RightSidebar 
+import {
+  Header,
+  Sidebar,
+  MainContent,
+  RightSidebar,
 } from './components/index';
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
-  
+
   if (!user) {
     redirect('/login');
   }
