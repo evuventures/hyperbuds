@@ -1,12 +1,20 @@
 import { cert, getApps, initializeApp } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 
-const serviceAccount = JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON!);
+let adminInitialized = false;
 
-if (!getApps().length) {
-  initializeApp({
-    credential: cert(serviceAccount),
-  });
+export function getAdminAuth() {
+  if (!adminInitialized && !getApps().length) {
+    const raw = process.env.GOOGLE_CREDENTIALS_JSON;
+    if (!raw) throw new Error("Missing GOOGLE_CREDENTIALS_JSON");
+
+    const serviceAccount = JSON.parse(raw);
+    initializeApp({ credential: cert(serviceAccount) });
+    adminInitialized = true;
+  }
+
+  return getAuth();
 }
+
 
 export const adminAuth = getAuth();
