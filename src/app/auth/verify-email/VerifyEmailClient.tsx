@@ -21,7 +21,7 @@ export default function VerifyEmail() {
     applyActionCode(auth, oobCode)
       .then(() => {
         setMessage('Email verified! Redirecting...')
-        setTimeout(() => router.push('/auth/signin'), 2000)
+        setTimeout(() => router.push('/dashboard'), 2000)
       })
       .catch(() => {
         setMessage('Verification failed or link expired.')
