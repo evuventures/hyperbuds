@@ -1,0 +1,32 @@
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar {
+   -ms-overflow-style: none;
+   /* IE & Edge */
+   scrollbar-width: none;
+   /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+   display: none;
+   /* Chrome, Safari */
+}
+
+/* Change dot size, shape, and color */
+.swiper-pagination-bullet {
+   background-color: #d1d5db;
+   /* gray-300 */
+   opacity: 1;
+   width: 12px;
+   height: 12px;
+   margin: 0 4px !important;
+   border-radius: 9999px;
+   /* full rounded */
+   transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+   background: linear-gradient(to right, #A259FF, #0011FF);
+   width: 14px;
+   height: 14px;
+   /* elongated active dot */
+}
