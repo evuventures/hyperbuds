@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Star, Users, Eye, Tag } from 'lucide-react';
+import Image from 'next/image';
 import { UserAvatar } from './UserAvatar';
 
 interface SidebarProps {
@@ -13,12 +13,13 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ user }) => {
   const [activeSection, setActiveSection] = useState('Matches');
-  
+
+  // Now using public folder images
   const exploreItems = [
-    { name: 'Matches', icon: Star, color: 'text-orange-500' },
-    { name: 'Collaborations', icon: Users, color: 'text-blue-500' },
-    { name: 'Audience', icon: Eye, color: 'text-green-500' },
-    { name: 'Marketplace', icon: Tag, color: 'text-red-500' },
+    { name: 'Matches', icon: '/images/icons-dashboard/Matches.svg', color: 'text-orange-500' },
+    { name: 'Collaborations', icon: '/images/icons-dashboard/Collaborations.svg', color: 'text-blue-500' },
+    { name: 'Audience', icon: '/images/icons-dashboard/Audience.svg', color: 'text-green-500' },
+    { name: 'Marketplace', icon: '/images/icons-dashboard/Marketplace.svg', color: 'text-red-500' },
   ];
 
   const friends = [
@@ -30,30 +31,37 @@ export const Sidebar: React.FC<SidebarProps> = ({ user }) => {
   ];
 
   return (
-    <div className="w-80 bg-white border-r border-gray-200 h-screen overflow-y-auto">
+    <div className="overflow-y-auto bg-white lg:h-screen">
       {/* Welcome Section */}
-      <div className="p-6 border-b border-gray-200">
+      <div className="p-5">
         <div className="flex items-center space-x-3">
           <UserAvatar name={user.username || user.email} />
           <span className="font-semibold text-gray-900">
-            Welcome {user.username || user.email.split('@')[0]}!
+            {user.username || user.email.split('@')[0]}!
           </span>
         </div>
       </div>
 
       {/* Explore Section */}
-      <div className="p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Explore</h2>
-        <div className="space-y-2">
+      <div className="p-5">
+        <h2 className="mb-4 text-lg font-semibold text-gray-900">Explore</h2>
+        <div className="grid grid-cols-2 space-y-2 md:grid-cols-1">
           {exploreItems.map((item) => (
             <div
               key={item.name}
-              className={`flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-colors ${
-                activeSection === item.name ? 'bg-purple-50 text-purple-600' : 'text-gray-700 hover:bg-gray-50'
-              }`}
+              className={`flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-colors ${activeSection === item.name
+                ? 'bg-purple-50 text-purple-600'
+                : 'text-gray-700 hover:bg-gray-50'
+                }`}
               onClick={() => setActiveSection(item.name)}
             >
-              <item.icon className={`w-5 h-5 ${item.color}`} />
+              <Image
+                src={item.icon}
+                width={20}
+                height={20}
+                alt={item.name}
+                className={item.color}
+              />
               <span className="font-medium">{item.name}</span>
             </div>
           ))}
@@ -61,11 +69,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ user }) => {
       </div>
 
       {/* Friends Section */}
-      <div className="p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Friends</h2>
+      <div className="hidden p-5 md:block">
+        <h2 className="mb-4 text-lg font-semibold text-gray-900">Friends</h2>
         <div className="space-y-3">
           {friends.map((friend, index) => (
-            <div key={index} className="flex items-center justify-between">
+            <div key={index} className="flex justify-between items-center">
               <div className="flex items-center space-x-3">
                 <UserAvatar name={friend.name} isOnline={friend.isOnline} size="w-10 h-10" />
                 <span className="font-medium text-gray-900">{friend.name}</span>
