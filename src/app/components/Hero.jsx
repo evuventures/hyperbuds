@@ -34,7 +34,7 @@ const scaleUp = {
 const Hero = ({ heading, subheading, ratings }) => {
   const router = useRouter();
   const handleButtonClick = () => {
-    router.push('/auth/signin');
+    router.push('/profile');
   };
 
   return (
