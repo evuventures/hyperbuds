@@ -1,7 +1,7 @@
 import React from 'react'
 import Registration from '../components/registration-components/Registration'
 
-const Registration = () => {
+const RegistrationPage = () => {
    return (
       <main>
          <Registration />
@@ -9,4 +9,4 @@ const Registration = () => {
    )
 }
 
-export default Registration
+export default RegistrationPage
