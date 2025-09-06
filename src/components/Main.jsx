@@ -1,17 +1,17 @@
 
 "use client";
 import React from 'react'
-import Navbar from './Navbar'
-import Hero from './Hero'
-import Solutions from './Solutions'
-import Features from './Features'
-import Steps from './Steps'
-import Sectors from './Sectors'
-import Testimonial from './Testimonial'
-import Blogs from './Blog'
-import Faq from './Faq'
-import Prefooter from './Prefooter'
-import Footer from './Footer'
+import Navbar from './layout/Navbar'
+import Hero from './landing-page/Hero'
+import Solutions from './landing-page/Solutions'
+import Features from './landing-page/Features'
+import Steps from './landing-page/Steps'
+import Sectors from './landing-page/Sectors'
+import Testimonial from './landing-page/Testimonial'
+import Blogs from './landing-page/Blog'
+import Faq from './landing-page/Faq'
+import Prefooter from './landing-page/Prefooter'
+import Footer from './layout/Footer'
 
 
 
