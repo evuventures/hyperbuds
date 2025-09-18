@@ -66,7 +66,7 @@ function Navbar() {
                 >
                   {item}
                   {/* Animated underline */}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-700 transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:w-full" />
                   {/* Hover glow effect */}
                   <span className="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-blue-700/0 group-hover:from-purple-500/10 group-hover:to-blue-700/10 rounded-lg -z-10 transition-all duration-300" />
                 </a>
@@ -75,7 +75,7 @@ function Navbar() {
           </ul>
 
           {/* Enhanced Get Started Button */}
-          <Link href='./Comingsoon.jsx'>
+          <Link href='./waitlist'>
             <motion.button
               className="group relative px-8 py-3 text-white rounded-full font-semibold overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
               whileHover={{ scale: 1.05 }}
@@ -172,7 +172,7 @@ function Navbar() {
                     whileHover={{ scale: 1.05 }}
                   >
                     {item}
-                    <span className="absolute -bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-700 transition-all duration-300 group-hover:w-full" />
+                    <span className="absolute -bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:w-full" />
                   </motion.a>
                 ))}
                 
@@ -185,7 +185,7 @@ function Navbar() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-700 transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-800" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-600" />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                   <span className="relative z-10">Get Started</span>
                 </motion.button>
@@ -198,7 +198,7 @@ function Navbar() {
       {/* Scroll indicator */}
       {scrolled && (
         <motion.div
-          className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-700"
+          className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500"
           initial={{ width: 0 }}
           animate={{ width: `${Math.min((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100, 100)}%` }}
           transition={{ duration: 0.1 }}
