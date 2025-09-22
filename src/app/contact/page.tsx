@@ -1,9 +1,10 @@
 import React from 'react'
 import Contact from '@/components/contact/Contact'
-const page:React.FC = () => {
+
+const ContactPage: React.FC = () => {
   return (
     <div><Contact/></div>
   )
 }
 
-export default page
+export default ContactPage
