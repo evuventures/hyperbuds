@@ -3,7 +3,7 @@ import Contact from '@/components/contact/Contact'
 
 const ContactPage: React.FC = () => {
   return (
-    <div><Contact/></div>
+    <div><Contact /></div>
   )
 }
 
