@@ -18,25 +18,31 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menuItems = ['Home', 'Features', 'How it works', 'Blogs', 'Contact'];
+  const menuItems = [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Features', href: '#features' },
+    { name: 'How it works', href: '#how-it-works' },
+    { name: 'Blogs', href: '#blogs' },
+    { name: 'Contact', href: '#contact' }
+  ];
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-white/20' 
-          : 'bg-white/80 backdrop-blur-sm shadow-md'
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+        ? 'border-b shadow-lg backdrop-blur-md bg-white/95 border-white/20'
+        : 'shadow-md backdrop-blur-sm bg-white/80'
+        }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-blue-700/5" />
-      
-      <div className="relative py-4 px-6 md:px-16 lg:px-32 flex justify-between items-center">
+      <div className="absolute inset-0 bg-gradient-to-r via-transparent from-purple-500/5 to-blue-700/5" />
+
+      <div className="flex relative justify-between items-center px-6 py-4 md:px-16 lg:px-32">
         {/* Logo */}
-        <motion.div 
+        <motion.div
           className="logo"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
@@ -46,30 +52,30 @@ function Navbar() {
             alt="Logo"
             width={192}
             height={48}
-            className="w-32 lg:w-48 h-auto"
+            className="w-32 h-auto lg:w-48"
           />
         </motion.div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-12">
-          <ul className="flex gap-8 list-none m-0 p-0">
+        <div className="hidden gap-12 items-center md:flex">
+          <ul className="flex gap-8 p-0 m-0 list-none">
             {menuItems.map((item, index) => (
               <motion.li
-                key={item}
+                key={item.name}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.2 }}
               >
-                <a
-                  href="#"
-                  className="relative text-gray-700 text-base font-medium hover:text-purple-600 transition-all duration-300 group"
+                <Link
+                  href={item.href}
+                  className="relative text-base font-medium text-gray-700 transition-all duration-300 hover:text-purple-600 group"
                 >
-                  {item}
+                  {item.name}
                   {/* Animated underline */}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:w-full" />
                   {/* Hover glow effect */}
-                  <span className="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-blue-700/0 group-hover:from-purple-500/10 group-hover:to-blue-700/10 rounded-lg -z-10 transition-all duration-300" />
-                </a>
+                  <span className="absolute inset-0 bg-gradient-to-r rounded-lg transition-all duration-300 from-purple-500/0 to-blue-700/0 group-hover:from-purple-500/10 group-hover:to-blue-700/10 -z-10" />
+                </Link>
               </motion.li>
             ))}
           </ul>
@@ -77,7 +83,7 @@ function Navbar() {
           {/* Enhanced Get Started Button */}
           <Link href='./waitlist'>
             <motion.button
-              className="group relative px-8 py-3 text-white rounded-full font-semibold overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="overflow-hidden relative px-8 py-3 font-semibold text-white rounded-full shadow-lg transition-all duration-300 group hover:shadow-2xl"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, x: 20 }}
@@ -86,12 +92,12 @@ function Navbar() {
             >
               {/* Background gradient */}
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-700 transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-800" />
-              
+
               {/* Animated shimmer effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-transparent transition-transform duration-700 -translate-x-full -skew-x-12 via-white/20 group-hover:translate-x-full" />
+
               {/* Button text */}
-              <span className="relative z-10 flex items-center justify-center gap-2">
+              <span className="flex relative z-10 gap-2 justify-center items-center">
                 Get Started
                 <motion.span
                   className="inline-block"
@@ -109,12 +115,12 @@ function Navbar() {
         <div className="md:hidden">
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className="relative w-10 h-10 bg-gradient-to-br from-purple-500/10 to-blue-700/10 rounded-lg hover:from-purple-500/20 hover:to-blue-700/20 transition-all duration-300 focus:outline-none"
+            className="relative w-10 h-10 bg-gradient-to-br rounded-lg transition-all duration-300 from-purple-500/10 to-blue-700/10 hover:from-purple-500/20 hover:to-blue-700/20 focus:outline-none"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
             <motion.div
-              className="absolute inset-0 flex flex-col justify-center items-center"
+              className="flex absolute inset-0 flex-col justify-center items-center"
               animate={isOpen ? "open" : "closed"}
             >
               <motion.span
@@ -150,7 +156,7 @@ function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-2xl border-t border-gray-200/50 md:hidden overflow-hidden"
+            className="overflow-hidden absolute left-0 top-full w-full border-t shadow-2xl backdrop-blur-md bg-white/95 border-gray-200/50 md:hidden"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -158,24 +164,27 @@ function Navbar() {
           >
             {/* Background gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-purple-500/5 to-blue-700/5" />
-            
-            <div className="relative py-6 px-6">
-              <div className="flex flex-col items-center gap-6">
+
+            <div className="relative px-6 py-6">
+              <div className="flex flex-col gap-6 items-center">
                 {menuItems.map((item, index) => (
-                  <motion.a
-                    key={item}
-                    href="#"
-                    className="relative text-gray-700 text-lg font-medium hover:text-purple-600 transition-all duration-300 group py-2"
+                  <motion.div
+                    key={item.name}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.05 }}
                   >
-                    {item}
-                    <span className="absolute -bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:w-full" />
-                  </motion.a>
+                    <Link
+                      href={item.href}
+                      className="relative py-2 text-lg font-medium text-gray-700 transition-all duration-300 hover:text-purple-600 group"
+                    >
+                      {item.name}
+                      <span className="absolute -bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-700 transition-all duration-300 group-hover:w-full" />
+                    </Link>
+                  </motion.div>
                 ))}
-                
+
                 {/* Mobile Get Started Button */}
                 <motion.button
                   className="group relative px-8 py-3 text-white rounded-full font-semibold overflow-hidden shadow-lg mt-4 min-w-[200px]"
@@ -185,7 +194,7 @@ function Navbar() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-600" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-700 transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-800" />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                   <span className="relative z-10">Get Started</span>
                 </motion.button>
