@@ -66,9 +66,11 @@ export function TeamGallery() {
                      {/* Simple overlay on hover */}
                      <div className="absolute inset-0 bg-gradient-to-t to-transparent rounded-2xl opacity-0 transition-opacity duration-150 from-purple-600/20 group-hover:opacity-100" />
 
-                     {/* Name overlay */}
-                     <div className="absolute right-0 bottom-0 left-0 p-3 text-black transition-transform duration-150 transform translate-y-full">
-                        <p className="text-sm font-medium text-gray-800">{image.alt}</p>
+                     {/* Name overlay - Visible on mobile, hover on desktop */}
+                     <div className="absolute right-0 bottom-0 left-0 p-3">
+                        <div className="px-3 py-2 rounded-lg border shadow-lg opacity-100 backdrop-blur-md transition-all duration-300 ease-out transform translate-y-2 bg-white/10 border-white/30 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
+                           <p className="text-sm font-medium text-center text-white drop-shadow-lg">{image.alt}</p>
+                        </div>
                      </div>
                   </motion.div>
                ))}

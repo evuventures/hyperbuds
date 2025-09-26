@@ -258,7 +258,7 @@ export function AboutHero() {
             </motion.p>
 
             <motion.div
-               className="flex flex-col gap-4 justify-center items-center sm:flex-row"
+               className="flex gap-4 justify-center items-center sm:flex-ro"
                initial={{ opacity: 0, y: 15 }}
                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
                transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}

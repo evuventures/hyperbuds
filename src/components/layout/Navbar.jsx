@@ -21,10 +21,10 @@ function Navbar() {
   const menuItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Features', href: '#features' },
-    { name: 'How it works', href: '#how-it-works' },
-    { name: 'Blogs', href: '#blogs' },
-    { name: 'Contact', href: '#contact' }
+    // { name: 'Features', href: '/features' },
+    // { name: 'How it works', href: '/how-it-works' },
+    // { name: 'Blogs', href: '/blogs' },
+    { name: 'Contact', href: '/contact' }
   ];
 
   return (
@@ -195,7 +195,7 @@ function Navbar() {
                   whileTap={{ scale: 0.95 }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-700 transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-800" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-transparent transition-transform duration-700 -translate-x-full -skew-x-12 via-white/20 group-hover:translate-x-full" />
                   <span className="relative z-10">Get Started</span>
                 </motion.button>
               </div>

@@ -1,8 +1,17 @@
-import React from 'react'
+"use client";
+
+import React from 'react';
+import { ContactHero } from './ContactHero';
+import { ContactInfoCards } from './ContactInfoCards';
+import { ContactForm } from './ContactForm';
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <div>
+      <ContactHero />
+      <ContactInfoCards />
+      <ContactForm />
+    </div>
   )
 }
 
