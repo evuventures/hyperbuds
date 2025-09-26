@@ -2,11 +2,11 @@
 
 import React from 'react';
 import Navbar from '@/components/layout/Navbar';
-import { AboutHero } from '@/app/components/about/AboutHero';
-import { TeamGallery } from '@/app/components/about/TeamGallery';
-import { MissionSection } from '@/app/components/about/MissionSection';
-import { VideoTestimonial } from '@/app/components/about/VideoTestimonial';
-import { FeaturesSection } from '@/app/components/about/FeaturesSection';
+import { AboutHero } from '@/components/about/AboutHero';
+import { TeamGallery } from '@/components/about/TeamGallery';
+import { MissionSection } from '@/components/about/MissionSection';
+import { VideoTestimonial } from '@/components/about/VideoTestimonial';
+import { FeaturesSection } from '@/components/about/FeaturesSection';
 import Footer from '@/components/layout/Footer';
 
 export default function AboutPage() {
