@@ -10,7 +10,7 @@ export function VideoTestimonial() {
    const isInView = useInView(ref, { once: false, amount: 0.2 });
 
    return (
-      <section ref={ref} className="py-20 px-6 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
+      <section ref={ref} className="py-20 px-6 bg-white">
          <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
                {/* Video Section */}
@@ -56,15 +56,15 @@ export function VideoTestimonial() {
 
                   {/* Quote Card */}
                   <motion.div
-                     className="mt-6 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
+                     className="mt-6 bg-gray-50 rounded-2xl p-6 shadow-lg"
                      initial={{ opacity: 0, y: 15 }}
                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
                      transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
                   >
-                     <blockquote className="text-lg font-medium text-gray-800 dark:text-gray-200 mb-2">
+                     <blockquote className="text-lg font-medium text-gray-800 mb-2">
                         &ldquo;Making an impact, together&rdquo;
                      </blockquote>
-                     <cite className="text-sm text-gray-600 dark:text-gray-400">
+                     <cite className="text-sm text-gray-600">
                         Socialy Founder
                      </cite>
                   </motion.div>
@@ -77,13 +77,13 @@ export function VideoTestimonial() {
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                   transition={{ duration: 1.0, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                >
-                  <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-200">
+                  <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
                      We empower small business owners
                   </h2>
 
                   <div className="space-y-6">
                      <motion.p
-                        className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
+                        className="text-lg text-gray-600 leading-relaxed"
                         initial={{ opacity: 0, y: 15 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
                         transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}

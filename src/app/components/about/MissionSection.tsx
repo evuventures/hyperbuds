@@ -8,7 +8,7 @@ export function MissionSection() {
    const isInView = useInView(ref, { once: false, amount: 0.2 });
 
    return (
-      <section ref={ref} className="py-20 px-6 bg-white dark:bg-gray-800">
+      <section ref={ref} className="py-20 px-6 bg-white">
          <div className="max-w-6xl mx-auto">
             <motion.div
                className="text-center mb-16"
@@ -16,7 +16,7 @@ export function MissionSection() {
                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                transition={{ duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-gray-200 mb-8">
+               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-8">
                   We make sure your idea & creation delivered properly
                </h2>
             </motion.div>
@@ -29,7 +29,7 @@ export function MissionSection() {
             >
                <div className="space-y-6">
                   <motion.p
-                     className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
+                     className="text-lg text-gray-600 leading-relaxed"
                      initial={{ opacity: 0, x: -15 }}
                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -15 }}
                      transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -40,7 +40,7 @@ export function MissionSection() {
                   </motion.p>
 
                   <motion.p
-                     className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
+                     className="text-lg text-gray-600 leading-relaxed"
                      initial={{ opacity: 0, x: -15 }}
                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -15 }}
                      transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}

@@ -27,7 +27,7 @@ export function FeaturesSection() {
    const isInView = useInView(ref, { once: false, amount: 0.2 });
 
    return (
-      <section ref={ref} className="py-20 px-6 bg-white dark:bg-gray-800">
+      <section ref={ref} className="py-20 px-6 bg-white">
          <div className="max-w-6xl mx-auto">
             {/* Header */}
             <motion.div
@@ -39,7 +39,7 @@ export function FeaturesSection() {
                {/* Decorative Elements */}
                <div className="absolute inset-0 pointer-events-none">
                   <motion.div
-                     className="absolute top-0 left-1/4 w-4 h-4 bg-purple-500 dark:bg-purple-400 rounded-full"
+                     className="absolute top-0 left-1/4 w-4 h-4 bg-purple-500 rounded-full"
                      animate={isInView ? {
                         y: [0, -10, 0],
                         rotate: [0, 180, 360]
@@ -51,7 +51,7 @@ export function FeaturesSection() {
                      }}
                   />
                   <motion.div
-                     className="absolute top-0 right-1/4 w-6 h-6 bg-blue-500 dark:bg-blue-400 rounded"
+                     className="absolute top-0 right-1/4 w-6 h-6 bg-blue-500 rounded"
                      animate={isInView ? {
                         y: [0, 10, 0],
                         rotate: [0, -180, -360]
@@ -64,12 +64,12 @@ export function FeaturesSection() {
                   />
                </div>
 
-               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-gray-200 mb-8">
+               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-8">
                   We help business to grow faster and bigger
                </h2>
 
                <motion.p
-                  className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+                  className="text-xl text-gray-600 max-w-3xl mx-auto"
                   initial={{ opacity: 0, y: 15 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
                   transition={{ duration: 1.0, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -89,7 +89,7 @@ export function FeaturesSection() {
                {features.map((feature, index) => (
                   <motion.div
                      key={feature.title}
-                     className="text-center group p-6 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 border border-gray-200 dark:border-gray-600"
+                     className="text-center group p-6 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200"
                      initial={{ opacity: 0, y: 20, scale: 0.95 }}
                      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
                      transition={{
@@ -113,11 +113,11 @@ export function FeaturesSection() {
                         <feature.icon className="w-10 h-10 text-white" />
                      </motion.div>
 
-                     <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">
+                     <h3 className="text-2xl font-bold text-gray-800 mb-4">
                         {feature.title}
                      </h3>
 
-                     <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                     <p className="text-gray-600 leading-relaxed">
                         {feature.description}
                      </p>
                   </motion.div>

@@ -32,7 +32,7 @@ export function TeamGallery() {
    const isInView = useInView(ref, { once: false, amount: 0.2 });
 
    return (
-      <section ref={ref} className="px-6 pt-32 pb-20 bg-white dark:bg-gray-800">
+      <section ref={ref} className="px-6 pt-32 pb-20 bg-white">
          <div className="mx-auto max-w-7xl">
             <motion.div
                className="grid relative z-10 grid-cols-2 gap-4 -mt-16 md:grid-cols-4 md:gap-6"
@@ -68,7 +68,7 @@ export function TeamGallery() {
 
                      {/* Name overlay */}
                      <div className="absolute right-0 bottom-0 left-0 p-3 text-black transition-transform duration-150 transform translate-y-full">
-                        <p className="text-sm font-medium dark:text-white">{image.alt}</p>
+                        <p className="text-sm font-medium text-gray-800">{image.alt}</p>
                      </div>
                   </motion.div>
                ))}
