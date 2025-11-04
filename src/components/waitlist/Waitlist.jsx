@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram, FaMicrochip, FaAddressCard, FaEnvelope } from 'react-icons/fa';
+import {  FaTiktok, FaInstagram, FaMicrochip, FaAddressCard, FaEnvelope } from 'react-icons/fa';
 import Image from 'next/image';
 
 const Cspage = () => {
@@ -72,8 +72,8 @@ const Cspage = () => {
           <h3 className="text-lg font-semibold mb-4 opacity-80">Follow us on social media</h3>
           <div className="flex justify-center space-x-6">
             
-            <a href="https://vt.tiktok.com/ZSU6rB1jm/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
-              <FaTwitter className="text-black hover:text-purple-500 transition-colors duration-300 text-3xl transform hover:scale-110" />
+            <a href="http://tiktok.com/@hyperbud" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
+              <FaTiktok className="text-black hover:text-purple-500 transition-colors duration-300 text-3xl transform hover:scale-110" />
             </a>
             <a href="https://www.instagram.com/hyper_buds?igsh=MTJ1cTE4NjE5eGdhMQ==" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
               <FaInstagram className="text-pink-400 hover:text-purple-500 transition-colors duration-300 text-3xl transform hover:scale-110" />
