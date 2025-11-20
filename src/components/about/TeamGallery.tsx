@@ -8,23 +8,24 @@ const teamImages = [
    {
       id: 1,
       src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop&crop=faces",
-      alt: "Team collaboration"
+      
    },
    {
-      id: 1,
-      src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop&crop=faces",
-      alt: "Team collaboration"
+      id: 2,
+      src: "/images/download (3).jpeg",
+      
    },
    {
       id: 3,
-      src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=faces",
-      alt: "Team members discussing"
+      src: "/images/photo.jpeg",
+      
    },
    {
       id: 4,
-      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=faces",
-      alt: "Professional man presenting"
-   }
+      src: "/images/download (2).jpeg",
+      
+   },
+  
 ];
 
 export function TeamGallery() {
@@ -55,7 +56,7 @@ export function TeamGallery() {
                      <div className="overflow-hidden rounded-2xl shadow-lg aspect-square">
                         <Image
                            src={image.src}
-                           alt={image.alt}
+                           alt=""
                            width={400}
                            height={400}
                            className="object-cover w-full h-full transition-transform duration-150 group-hover:scale-105"
@@ -66,12 +67,13 @@ export function TeamGallery() {
                      {/* Simple overlay on hover */}
                      <div className="absolute inset-0 bg-gradient-to-t to-transparent rounded-2xl opacity-0 transition-opacity duration-150 from-purple-600/20 group-hover:opacity-100" />
 
-                     {/* Name overlay - Visible on mobile, hover on desktop */}
+                     {/* Name overlay - Visible on mobile, hover on desktop 
                      <div className="absolute right-0 bottom-0 left-0 p-3">
                         <div className="px-3 py-2 rounded-lg border shadow-lg opacity-100 backdrop-blur-md transition-all duration-300 ease-out transform translate-y-2 bg-white/10 border-white/30 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
                            <p className="text-sm font-medium text-center text-white drop-shadow-lg">{image.alt}</p>
                         </div>
                      </div>
+                     */}
                   </motion.div>
                ))}
             </motion.div>

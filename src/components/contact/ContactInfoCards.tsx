@@ -8,24 +8,20 @@ const contactInfo = [
    {
       icon: MapPin,
       title: "Office Location",
-      details: "4140 Parker Rd. Allentown, New Mexico 3134",
-      action: "Direction →",
+      details: "Evu, LLC 120 W.55th Street New York, NY 10019",
       color: "from-purple-500 to-purple-600"
    },
    {
       icon: Clock,
       title: "Working Hours",
-      details: "Sun to Fri 10am to 06pm",
-      details2: "Sat 10am to 02pm",
-      action: "Learn more →",
+      details: " Sun to Fri 10am to 05pm EST",
       color: "from-blue-500 to-blue-600"
    },
    {
       icon: Headphones,
       title: "Communication",
       details: "+123 456 7891",
-      details2: "themeix@gmail.com",
-      action: "Support →",
+      details2: "hyperbuds1@gmail.com",
       color: "from-green-500 to-green-600"
    }
 ];
@@ -50,7 +46,7 @@ export function ContactInfoCards() {
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                >
-                  {"// Contact us"}
+                  
                </motion.p>
                <motion.h2
                   className="text-4xl font-bold text-gray-800 md:text-5xl lg:text-6xl"
@@ -158,16 +154,8 @@ export function ContactInfoCards() {
                            ease: [0.25, 0.46, 0.45, 0.94]
                         }}
                      >
-                        <span className="transition-all duration-300 group-hover/link:mr-1">
-                           {info.action}
-                        </span>
-                        <motion.span
-                           className="ml-1"
-                           whileHover={{ x: 3 }}
-                           transition={{ duration: 0.3 }}
-                        >
-                           →
-                        </motion.span>
+                       
+                        
                      </motion.a>
 
                      {/* Hover effect overlay */}

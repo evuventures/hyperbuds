@@ -3,7 +3,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Send, User, Mail, MessageSquare } from 'lucide-react';
-
+import Link from 'next/link';
 export function ContactForm() {
    const ref = useRef(null);
    const isInView = useInView(ref, { once: false, amount: 0.2 });
@@ -112,14 +112,12 @@ export function ContactForm() {
                      </motion.div>
 
                      {/* Submit Button */}
-                     <motion.button
+                     <Link
+                        href="mailto:hyperbuds1@gmail.com"
                         type="submit"
                         className="w-full bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center space-x-2 group"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        
+                        
                      >
                         <span>Send Message</span>
                         <motion.div
@@ -127,7 +125,7 @@ export function ContactForm() {
                         >
                            <Send className="w-5 h-5" />
                         </motion.div>
-                     </motion.button>
+                     </Link>
                   </form>
                </motion.div>
 
@@ -185,14 +183,7 @@ export function ContactForm() {
                            </p>
                         </div>
 
-                        <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                           <h4 className="font-semibold text-gray-800 mb-2">
-                              Free Consultation
-                           </h4>
-                           <p className="text-gray-600 text-sm">
-                              Get a free 30-minute consultation to discuss your project needs.
-                           </p>
-                        </div>
+                        
                      </motion.div>
                   </div>
                </motion.div>

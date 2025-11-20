@@ -5,7 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import { AboutHero } from '@/components/about/AboutHero';
 import { TeamGallery } from '@/components/about/TeamGallery';
 import { MissionSection } from '@/components/about/MissionSection';
-import { VideoTestimonial } from '@/components/about/VideoTestimonial';
+
 import { FeaturesSection } from '@/components/about/FeaturesSection';
 import Footer from '@/components/layout/Footer';
 
@@ -23,9 +23,7 @@ export default function AboutPage() {
          {/* Mission Section */}
          <MissionSection />
 
-         {/* Video Testimonial */}
-         <VideoTestimonial />
-
+        
          {/* Features Section */}
          <FeaturesSection />
 
