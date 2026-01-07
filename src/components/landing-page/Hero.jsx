@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from "next/image";
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -32,11 +32,8 @@ const scaleUp = {
 };
 
 const Hero = ({ heading, subheading, ratings }) => {
-  const router = useRouter();
-  const handleButtonClick = () => {
-    router.push('/waitlist');
-  };
-
+ 
+  
   return (
     <main className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50/30 overflow-hidden">
       {/* Background Elements */}
@@ -171,23 +168,25 @@ const Hero = ({ heading, subheading, ratings }) => {
             className="group relative px-8 py-4 text-white rounded-full font-semibold text-lg overflow-hidden shadow-2xl"
             variants={fadeUp}
             custom={0.4}
-            onClick={handleButtonClick}
+          
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-700 transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-800" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/0 to-black/0 group-hover:from-black/10 group-hover:to-black/10 transition-all duration-300" />
             <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
-            <span className="relative z-10 flex items-center justify-center gap-2">
+            <Link href="/waitlist" className="relative z-10 flex items-center justify-center gap-2">
               Get Started
               <motion.span
                 className="inline-block"
+               
                 animate={{ x: [0, 4, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
+
               >
                 →
               </motion.span>
-            </span>
+            </Link>
           </motion.button>
 
           {/* Enhanced Divider */}

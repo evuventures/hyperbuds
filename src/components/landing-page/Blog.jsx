@@ -27,10 +27,13 @@ const Blogs = () => {
   ];
 
   return (
-    <section className="px-6 sm:px-10 md:px-20 lg:px-32 py-16">
+    <section id="blogs" className="px-6 sm:px-10 md:px-20 lg:px-32 py-16">
       {/* Head Section */}
       <div className="flex flex-col sm:flex-row justify-between mb-16 sm:mb-4 gap-6 sm:gap-0">
+        <div className='flex flex-row gap-2 justify-center items-center'>
         <h2 className="text-2xl md:text-3xl font-semibold">Recent Blog Posts</h2>
+        <p className='text-sm text-center px-3 py-1 bg-gray-200 text-gray-600 rounded-full'>soon</p>
+        </div>
         <button className="bg-gradient-to-r from-purple-500 to-blue-700 text-white px-6 py-4 sm:px-4 rounded-full w-fit">
           Read more Articles
         </button>

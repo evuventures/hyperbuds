@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-
+import Link from 'next/link';
 // Enhanced Animation Variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -112,9 +112,9 @@ const Features = () => {
       glowColor: "shadow-red-500/30",
     },
   ];
-
+  
   return (
-    <div className="relative min-h-screen bg-black overflow-hidden">
+    <div id="features" className="relative min-h-screen bg-black overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#A259FF]/10 rounded-full blur-3xl animate-pulse"></div>
@@ -288,15 +288,17 @@ const Features = () => {
           >
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
+              
               initial={{ x: "-100%" }}
               whileHover={{ x: "100%" }}
               transition={{ duration: 0.6 }}
             />
-            <span className="relative z-10">Explore All Features</span>
+            <Link href="/waitlist" className="relative z-10" >Explore All Features</Link>
           </motion.button>
         </motion.div>
       </div>
     </div>
+
   );
 };
 

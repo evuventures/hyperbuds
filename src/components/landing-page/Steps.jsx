@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-
+import Link from 'next/link';
 const stepsData = [
   { 
     icon: '👤', 
@@ -91,7 +91,7 @@ const Steps = () => {
   const [activeStep, setActiveStep] = useState(null);
 
   return (
-    <section className="relative px-6 sm:px-10 md:px-20 lg:px-32 py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden">
+    <section id='how-it-works' className="relative px-6 sm:px-10 md:px-20 lg:px-32 py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-40">
         <div className="absolute top-10 left-10 w-32 h-32 bg-[#A259FF]/10 rounded-full blur-2xl animate-pulse"></div>
@@ -272,7 +272,7 @@ const Steps = () => {
               whileHover={{ x: "100%" }}
               transition={{ duration: 0.6 }}
             />
-            <span className="relative z-10">Get Started Today</span>
+            <Link href="/waitlist" className="relative z-10">Get Started Today</Link>
           </motion.button>
         </motion.div>
       </div>

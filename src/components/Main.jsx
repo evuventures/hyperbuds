@@ -1,7 +1,7 @@
 
 "use client";
 import React from 'react'
-import Navbar from './layout/Navbar'
+
 import Hero from './landing-page/Hero'
 import Solutions from './landing-page/Solutions'
 import Features from './landing-page/Features'
@@ -11,14 +11,12 @@ import Testimonial from './landing-page/Testimonial'
 import Blogs from './landing-page/Blog'
 import Faq from './landing-page/Faq'
 import Prefooter from './landing-page/Prefooter'
-import Footer from './layout/Footer'
-
 
 
 const Main = () => {
   return (
     <div>
-     <Navbar/>
+    
      
      <Hero
               heading="Unleash Creative Collaboration, Powered by AI"
@@ -47,7 +45,7 @@ const Main = () => {
       
                <Prefooter/>
            
-           <Footer/>
+          
        {/*    
      */}
     </div>

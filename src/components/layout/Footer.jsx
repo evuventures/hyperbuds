@@ -1,8 +1,9 @@
 "use client";
 import React from 'react';
-import { FaUser, FaFacebook, FaTimes, FaInstagram } from 'react-icons/fa';
+import { FaUser, FaFacebook, FaInstagram, FaLinkedin, FaTiktok } from 'react-icons/fa';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -76,44 +77,66 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-3">Menu</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>Home</li>
-              <li>Features</li>
-              <li>How it works</li>
-              <li>Blogs</li>
+              <li>
+                <Link href="/" className="block hover:text-purple-500 transition">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/#features" className="block hover:text-purple-500 transition">
+                  Features
+                </Link>
+              </li>
+              <li>
+                <Link href="/#how-it-works" className="block hover:text-purple-500 transition">
+                  How it works
+                </Link>
+              </li>
+              <li>
+                <Link href="/#blogs" className="block hover:text-purple-500 transition">
+                  Blogs
+                </Link>
+              </li>
             </ul>
           </div>
+
           <div>
             <h3 className="font-semibold mb-3">Company</h3>
             <ul className="space-y-2 text-gray-400">
               <li>AI Matchmaker</li>
               <li>Plans & Pricing</li>
-              <li>Personal Manager</li>
+              <li>Help Center</li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold mb-3">Resources</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>Help Center</li>
-              <li>Blogs</li>
-              <li>Privacy & Policy</li>
+              <li><Link href="/terms">Terms and Condition</Link></li>
+              <li><Link href="/#blogs">Blogs</Link></li>
+              <li><Link href="/privacy">Privacy & Policy</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold mb-3">Contact</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>info@hyperbuds.com</li>
-              <li>+23456749302</li>
+              <Link href="mailto:hyperbuds1@gmail.com">hyperbuds1@gmail.com</Link>
+
               <li>
                 <div className="flex space-x-4 mt-2">
-                  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                     <FaFacebook className="text-blue-600 hover:text-blue-800 text-xl" />
-                  </a>
-                  <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-                    <FaTimes className="text-white text-xl" />
-                  </a>
-                  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+
+                  </Link>
+                  <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                    <FaTiktok className="text-white text-xl" />
+                  </Link>
+                  <Link href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+                    <FaLinkedin className="text-blue-600 hover:text-blue-800 text-xl" />
+                  </Link>
+                  <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
                     <FaInstagram className="text-pink-500 hover:text-pink-700 text-xl" />
-                  </a>
+                  </Link>
+
                 </div>
               </li>
             </ul>
@@ -132,9 +155,9 @@ const Footer = () => {
       >
         <p>@ 2025 Hyperbuds Ltd. All rights reserved</p>
         <ul className="flex gap-6 mt-4 sm:mt-0">
-          <li>About</li>
-          <li>Contact</li>
-          <li>Terms</li>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
+          <Link href="/terms">Terms</Link>
         </ul>
       </motion.div>
     </motion.section>
