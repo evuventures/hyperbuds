@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { FaUser, FaFacebook, FaInstagram, FaLinkedin, FaTiktok } from 'react-icons/fa';
+import { FaUser,  FaInstagram, FaLinkedin, FaTiktok } from 'react-icons/fa';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -119,17 +119,14 @@ const Footer = () => {
 
               <li>
                 <div className="flex space-x-4 mt-2">
-                  <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                    <FaFacebook className="text-blue-600 hover:text-blue-800 text-xl" />
-
-                  </Link>
+                  
                   <Link href="https://www.tiktok.com/@hyperbud" target="_blank" rel="noopener noreferrer">
                     <FaTiktok className="text-white text-xl" />
                   </Link>
-                  <Link href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://www.linkedin.com/company/hyperbuds" target="_blank" rel="noopener noreferrer">
                     <FaLinkedin className="text-blue-600 hover:text-blue-800 text-xl" />
                   </Link>
-                  <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://www.instagram.com/hyper_buds" target="_blank" rel="noopener noreferrer">
                     <FaInstagram className="text-pink-500 hover:text-pink-700 text-xl" />
                   </Link>
 
