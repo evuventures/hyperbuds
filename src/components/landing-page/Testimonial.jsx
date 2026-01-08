@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-
+import Link from 'next/link';
 const testimonialsData = [
   {
     name: 'Babatunde Kosoko',
@@ -101,7 +101,7 @@ const Testimonial = () => {
   );
 
   return (
-    <section className="relative bg-gradient-to-br from-gray-50 via-white to-purple-50 px-6 py-20 md:px-20 lg:px-32 overflow-hidden">
+    <section className="relative bg-linear-to-br from-gray-50 via-white to-purple-50 px-6 py-20 md:px-20 lg:px-32 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-20 w-40 h-40 bg-[#A259FF]/10 rounded-full blur-3xl animate-pulse"></div>
@@ -145,7 +145,7 @@ const Testimonial = () => {
           variants={titleVariants}
         >
           <motion.h2 
-            className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-[#A259FF] to-gray-900 bg-clip-text text-transparent"
+            className="text-4xl lg:text-5xl font-bold bg-linear-to-r from-gray-900 via-[#A259FF] to-gray-900 bg-clip-text text-transparent"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -183,7 +183,7 @@ const Testimonial = () => {
           </motion.div>
 
           <motion.button
-            className="relative px-8 py-4 bg-gradient-to-r from-[#A259FF] to-purple-600 text-white font-semibold rounded-full shadow-lg overflow-hidden group self-center lg:self-start"
+            className="relative px-8 py-4 bg-linear-to-r from-[#A259FF] to-purple-600 text-white font-semibold rounded-full shadow-lg overflow-hidden group self-center lg:self-start"
             whileHover={{ 
               scale: 1.05, 
               boxShadow: "0 10px 30px rgba(162, 89, 255, 0.3)" 
@@ -192,12 +192,12 @@ const Testimonial = () => {
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
+              className="absolute inset-0 bg-linear-to-r from-white/20 to-transparent"
               initial={{ x: "-100%" }}
               whileHover={{ x: "100%" }}
               transition={{ duration: 0.6 }}
             />
-            <span className="relative z-10">Join Our Community</span>
+            <Link href="/waitlist" className="relative z-10">Join Our Community</Link>
           </motion.button>
         </motion.div>
 
@@ -244,16 +244,16 @@ const Testimonial = () => {
                   <div className="relative z-10 flex gap-4">
                     {/* Avatar */}
                     <motion.div
-                      className="relative flex-shrink-0"
+                      className="relative shrink-0"
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${testimonial.color} flex items-center justify-center text-2xl shadow-lg`}>
+                      <div className={`w-16 h-16 rounded-full bg-linear-to-r ${testimonial.color} flex items-center justify-center text-2xl shadow-lg`}>
                         {testimonial.image}
                       </div>
                       {activeIndex === index && (
                         <motion.div
-                          className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#A259FF]/30 to-transparent"
+                          className="absolute -inset-1 rounded-full bg-linear-to-r from-[#A259FF]/30 to-transparent"
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
                           transition={{ duration: 0.3 }}
@@ -290,7 +290,7 @@ const Testimonial = () => {
 
                   {/* Active Indicator */}
                   <motion.div
-                    className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#A259FF] to-purple-600 rounded-full"
+                    className="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-[#A259FF] to-purple-600 rounded-full"
                     initial={{ scaleY: 0 }}
                     animate={{ scaleY: activeIndex === index ? 1 : 0 }}
                     transition={{ duration: 0.3 }}

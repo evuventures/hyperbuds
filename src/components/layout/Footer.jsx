@@ -92,11 +92,7 @@ const Footer = () => {
                   How it works
                 </Link>
               </li>
-              <li>
-                <Link href="/#blogs" className="block hover:text-purple-500 transition">
-                  Blogs
-                </Link>
-              </li>
+             
             </ul>
           </div>
 
@@ -111,7 +107,7 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-3">Resources</h3>
             <ul className="space-y-2 text-gray-400">
-              <li><Link href="/terms">Terms and Condition</Link></li>
+              <li><Link href="/terms">Terms of use</Link></li>
               <li><Link href="/#blogs">Blogs</Link></li>
               <li><Link href="/privacy">Privacy & Policy</Link></li>
             </ul>
