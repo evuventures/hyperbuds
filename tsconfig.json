@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-   "baseUrl": ".",                // Use project root as reference
+    "baseUrl": ".", // Use project root as reference
     "paths": {
-      "@/*": ["src/*"]            // Map '@/...' to 'src/...'
+      "@/*": [
+        "src/*"
+      ] // Map '@/...' to 'src/...'
     },
     "lib": [
       "dom",
@@ -20,7 +22,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "plugins": [
       {
         "name": "next"
@@ -31,8 +33,10 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/app/components/SignInForm.tsx"  ],
+    "**/*.tsx",
+    "src/app/components/SignInForm.tsx",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
