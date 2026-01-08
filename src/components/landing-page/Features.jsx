@@ -119,7 +119,7 @@ const Features = () => {
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#A259FF]/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#A259FF]/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-[#A259FF]/3 to-transparent rounded-full blur-3xl animate-spin" style={{ animationDuration: '20s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-linear-to-r from-[#A259FF]/3 to-transparent rounded-full blur-3xl animate-spin" style={{ animationDuration: '20s' }}></div>
       </div>
 
       {/* Floating Particles */}
@@ -160,11 +160,11 @@ const Features = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <h2 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-white via-[#A259FF] to-white bg-clip-text text-transparent">
+            <h2 className="text-5xl md:text-7xl font-bold mb-4 bg-linear-to-r from-white via-[#A259FF] to-white bg-clip-text text-transparent">
               Key Features
             </h2>
             <motion.div
-              className="absolute -inset-2 bg-gradient-to-r from-[#A259FF]/20 to-transparent rounded-lg blur-xl"
+              className="absolute -inset-2 bg-linear-to-r from-[#A259FF]/20 to-transparent rounded-lg blur-xl"
               variants={glowVariants}
               initial="initial"
               animate="animate"
@@ -204,7 +204,7 @@ const Features = () => {
             >
               {/* Card Glow Effect */}
               <motion.div
-                className={`absolute -inset-1 bg-gradient-to-r from-[#A259FF]/50 to-transparent rounded-2xl blur-xl ${feature.glowColor}`}
+                className={`absolute -inset-1 bg-linear-to-r from-[#A259FF]/50 to-transparent rounded-2xl blur-xl ${feature.glowColor}`}
                 animate={{
                   opacity: hoveredCard === feature.id ? 0.6 : 0.2,
                   scale: hoveredCard === feature.id ? 1.05 : 1,
@@ -213,7 +213,7 @@ const Features = () => {
               />
 
               {/* Main Card */}
-              <div className={`relative h-full backdrop-blur-xl bg-gradient-to-br ${feature.gradient} border border-[#A259FF]/30 rounded-2xl p-8 transition-all duration-300 hover:border-[#A259FF]/60`}>
+              <div className={`relative h-full backdrop-blur-xl bg-linear-to-br ${feature.gradient} border border-[#A259FF]/30 rounded-2xl p-8 transition-all duration-300 hover:border-[#A259FF]/60`}>
                 {/* Icon with Animation */}
                 <motion.div
                   className="relative mb-6"
@@ -262,7 +262,7 @@ const Features = () => {
 
                 {/* Bottom Accent */}
                 <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#A259FF] to-transparent"
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#A259FF] to-transparent"
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
@@ -281,13 +281,13 @@ const Features = () => {
           transition={{ delay: 0.3, duration: 0.8 }}
         >
           <motion.button
-            className="relative px-12 py-4 bg-gradient-to-r from-[#A259FF] to-[#A259FF]/70 text-white font-bold text-lg rounded-full overflow-hidden group"
+            className="relative px-12 py-4 bg-linear-to-r from-[#A259FF] to-[#A259FF]/70 text-white font-bold text-lg rounded-full overflow-hidden group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
+              className="absolute inset-0 bg-linear-to-r from-white/20 to-transparent"
               
               initial={{ x: "-100%" }}
               whileHover={{ x: "100%" }}

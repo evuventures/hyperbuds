@@ -12,7 +12,7 @@ const Footer = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       viewport={{ once: false, amount: 0.2 }}
-      className="bg-black text-white px-4 sm:px-8 lg:px-[124px] py-[64px] lg:py-[124px]"
+      className="bg-black text-white px-4 sm:px-8 lg:px-31 py-16 lg:py-31"
     >
       {/* Newsletter Section */}
       <motion.div
@@ -42,7 +42,7 @@ const Footer = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
-              className="bg-gradient-to-r from-purple-500 to-blue-700 text-white font-medium py-3 px-10 sm:px-6 rounded-full transition w-full sm:w-auto"
+              className="bg-linear-to-r from-purple-500 to-blue-700 text-white font-medium py-3 px-10 sm:px-6 rounded-full transition w-full sm:w-auto"
             >
               Subscribe
             </motion.button>
@@ -73,7 +73,7 @@ const Footer = () => {
         </div>
 
         {/* Footer Links */}
-        <div className="flex-[2] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+        <div className="flex-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
           <div>
             <h3 className="font-semibold mb-3">Menu</h3>
             <ul className="space-y-2 text-gray-400">

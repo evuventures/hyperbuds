@@ -34,7 +34,7 @@ const Blogs = () => {
         <h2 className="text-2xl md:text-3xl font-semibold">Recent Blog Posts</h2>
         <p className='text-sm text-center px-3 py-1 bg-gray-200 text-gray-600 rounded-full'>soon</p>
         </div>
-        <button className="bg-gradient-to-r from-purple-500 to-blue-700 text-white px-6 py-4 sm:px-4 rounded-full w-fit">
+        <button className="bg-linear-to-r from-purple-500 to-blue-700 text-white px-6 py-4 sm:px-4 rounded-full w-fit">
           Read more Articles
         </button>
       </div>
