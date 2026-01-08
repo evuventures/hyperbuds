@@ -123,7 +123,7 @@ const Footer = () => {
                     <FaFacebook className="text-blue-600 hover:text-blue-800 text-xl" />
 
                   </Link>
-                  <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://www.tiktok.com/@hyperbud" target="_blank" rel="noopener noreferrer">
                     <FaTiktok className="text-white text-xl" />
                   </Link>
                   <Link href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
