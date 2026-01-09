@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function PrivacyPolicy() {
   return (
-    <main className="min-h-screen bg-gray-50  text-gray-800  px-6 py-20 md:py-30 md:px-20">
+    <main className="min-h-screen bg-gray-50  text-gray-800  px-6 py-30 md:px-20">
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
