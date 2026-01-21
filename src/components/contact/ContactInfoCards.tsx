@@ -14,14 +14,14 @@ const contactInfo = [
    {
       icon: Clock,
       title: "Working Hours",
-      details: " Sun to Fri 10am to 05pm EST",
+      details: " Sun to Fri 10am to 5pm EST",
       color: "from-blue-500 to-blue-600"
    },
    {
       icon: Headphones,
       title: "Communication",
-      details: "+123 456 7891",
-      details2: "hyperbuds1@gmail.com",
+      details: "+1 (305) 697-8658",
+      details2: "info@hyperbuds.com",
       color: "from-green-500 to-green-600"
    }
 ];
@@ -68,7 +68,7 @@ export function ContactInfoCards() {
                {contactInfo.map((info, index) => (
                   <motion.div
                      key={info.title}
-                     className="group relative bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 border border-gray-200 min-h-[200px] flex flex-col justify-between"
+                     className="group relative bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 border border-gray-200 min-h-50 flex flex-col justify-between"
                      initial={{ opacity: 0, y: 20 }}
                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                      transition={{
@@ -84,7 +84,7 @@ export function ContactInfoCards() {
                   >
                      {/* Icon */}
                      <motion.div
-                        className={`w-16 h-16 bg-gradient-to-r ${info.color} rounded-xl flex items-center justify-center mb-6 transition-all duration-300`}
+                        className={`w-16 h-16 bg-linear-to-r ${info.color} rounded-xl flex items-center justify-center mb-6 transition-all duration-300`}
                         whileHover={{
                            rotate: 360,
                            scale: 1.15,
@@ -160,7 +160,7 @@ export function ContactInfoCards() {
 
                      {/* Hover effect overlay */}
                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r rounded-2xl from-purple-500/10 to-blue-500/10"
+                        className="absolute inset-0 bg-linear-to-r rounded-2xl from-purple-500/10 to-blue-500/10"
                         initial={{ opacity: 0 }}
                         whileHover={{
                            opacity: 1,
