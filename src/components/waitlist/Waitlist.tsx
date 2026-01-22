@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from 'react';
-import {  FaTiktok, FaInstagram, FaMicrochip, FaAddressCard, FaEnvelope, FaCheckCircle, FaTimes, FaSpinner } from 'react-icons/fa';
+import { FaTiktok, FaInstagram, FaMicrochip, FaAddressCard, FaEnvelope, FaCheckCircle, FaTimes, FaSpinner, FaLinkedin } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-
+import { waitlistApi } from '@/lib/api/waitlist.api';
+import Link from 'next/link';
 const Cspage = () => {
   const [email, setEmail] = useState('');
   const [submittedEmail, setSubmittedEmail] = useState('');
@@ -12,7 +12,7 @@ const Cspage = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
@@ -25,33 +25,24 @@ const Cspage = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://api-hyperbuds-backend.onrender.com/api/v1/waitlist', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
+      // Using the centralized Axios library
+      await waitlistApi.joinWaitlist(email);
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong. Please try again.');
-      }
-
-      // Success - show modal
-      setSubmittedEmail(email); // Save email for modal display
-      setEmail(''); // Clear the form
+      // Success logic
+      setSubmittedEmail(email);
+      setEmail('');
       setShowSuccessModal(true);
-    } catch (err) {
-      setError(err.message || 'Failed to join waitlist. Please try again.');
+    } catch (err: any) {
+      // Handling Axios error structure
+      const message = err.response?.data?.message || 'Failed to join waitlist. Please try again.';
+      setError(message);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="relative min-h-screen bg-white w-full">
+    <div className="flex flex-col justify-center items-center py-30 px-6 md:px-8 lg:px-12 bg-white max-w-6xl mx-auto min-h-screen">
       {/* Success Modal */}
       <AnimatePresence>
         {showSuccessModal && (
@@ -64,7 +55,7 @@ const Cspage = () => {
               exit={{ opacity: 0 }}
               onClick={() => setShowSuccessModal(false)}
             />
-            
+
             {/* Modal */}
             <motion.div
               className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -97,7 +88,7 @@ const Cspage = () => {
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
                 >
-                  <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-20 h-20 bg-linear-to-r from-purple-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
                     <FaCheckCircle className="w-10 h-10 text-white" />
                   </div>
                 </motion.div>
@@ -113,7 +104,7 @@ const Cspage = () => {
                     Check Your Email!
                   </h2>
                   <p className="text-gray-600 leading-relaxed">
-                    A confirmation email has been sent to <span className="font-semibold text-purple-600">{submittedEmail}</span>. 
+                    A confirmation email has been sent to <span className="font-semibold text-purple-600">{submittedEmail}</span>.
                     Please check your inbox and follow the instructions to complete your waitlist signup.
                   </p>
                 </motion.div>
@@ -121,7 +112,7 @@ const Cspage = () => {
                 {/* Close Button */}
                 <motion.button
                   onClick={() => setShowSuccessModal(false)}
-                  className="mt-6 w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:from-purple-600 hover:to-blue-600 hover:shadow-lg"
+                  className="mt-6 w-full bg-linear-to-r from-purple-500 to-blue-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:from-purple-600 hover:to-blue-600 hover:shadow-lg"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -132,31 +123,29 @@ const Cspage = () => {
           </>
         )}
       </AnimatePresence>
+      <div className=" flex flex-col items-center">
 
-      {/* Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 md:px-12 py-16 min-h-screen">
-        
         {/* Main Text Section */}
-        <div className="max-w-3xl mb-12 mt-24">
-          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-black mb-4 ">
-            We're Launching Soon!
+        <div className="max-w-3xl mb-12 text-center">
+          <h1 className="text-4xl md:text-6xl font-semibold  text-black mb-4 ">
+            We&apos;re Launching Soon!
           </h1>
-          <p className="text-lg md:text-xl max-w-xl mx-auto leading-relaxed opacity-90 ">
+          <p className="text-lg md:text-xl max-w-xl mx-auto  opacity-90 ">
             The future of creator collaboration is here. Be the first to connect, monetize, and grow with our AI-powered ecosystem.
           </p>
         </div>
-        
+
         {/* Signup Form */}
         <form onSubmit={handleSubmit} className="flex flex-col md:flex-row justify-center items-center w-full max-w-xl mt-2 mb-12">
           <div className="w-full md:w-3/5 mb-4 md:mb-0 md:mr-4">
-            <input 
-              type="email" 
+            <input
+              type="email"
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
                 setError(''); // Clear error when user types
               }}
-              placeholder="Enter your email" 
+              placeholder="Enter your email"
               className="w-full p-4 rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-800 transition-all duration-300"
               required
               disabled={isLoading}
@@ -171,10 +160,10 @@ const Cspage = () => {
               </motion.p>
             )}
           </div>
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={isLoading}
-            className="px-8 py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none cursor-pointer w-full md:w-2/5 flex items-center justify-center gap-2"
+            className="px-8 py-4 bg-linear-to-r from-purple-500 to-blue-500 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none cursor-pointer w-full md:w-2/5 flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>
@@ -186,53 +175,56 @@ const Cspage = () => {
             )}
           </button>
         </form>
+
         {/* HyperBuds Features Section with Cards */}
-        <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 mt-6">
-          
+        <div className="w-full max-w-4xl flex flex-col md:flex-row justify-center items-stretch gap-6 my-8">
+
           {/* AI-Powered Matchmaking Card */}
-          <div className="bg-white border-1 border-purple-300 rounded-lg p-6 text-black shadow-xl transition-transform transform hover:scale-105">
+          <div className="bg-white border border-purple-300 rounded-lg p-6 text-black shadow-xl transition-transform transform hover:scale-105">
             <div className="flex justify-center mb-4">
               <FaMicrochip className="text-5xl text-purple-400" />
             </div>
-            <h3 className="text-xl font-bold mb-2">AI Matchmaking</h3>
-            <p className="text-sm">Discover perfect collaboration partners with our proprietary algorithm.</p>
+            <h3 className="text-xl font-bold mb-2 text-center">AI Matchmaking</h3>
+            <p className="text-sm text-center">Discover perfect collaboration partners with our proprietary algorithm.</p>
           </div>
-          
+
           {/* Live Collab Studio Card */}
-          <div className="bg-white border-1 rounded-lg  border-purple-300 p-6 text-black shadow-xl transition-transform transform hover:scale-105">
+          <div className="bg-white border rounded-lg  border-purple-300 p-6 text-black shadow-xl transition-transform transform hover:scale-105">
             <div className="flex justify-center mb-4">
               <FaAddressCard className="text-5xl text-purple-400" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Creator Sign-up and Profile Setup</h3>
-            <p className="text-sm">Quickly create your profile with niche, links, and follower stats to get started.</p>
+            <h3 className="text-xl font-bold mb-2 text-center">Creator Sign-up and Profile Setup</h3>
+            <p className="text-sm text-center">Quickly create your profile with niche, links, and follower stats to get started.</p>
           </div>
-          
+
           {/* Creator Marketplace Card */}
-          <div className="bg-white border-1 rounded-lg  border-purple-300 p-6 text-black shadow-xl transition-transform transform hover:scale-105">
+          <div className="bg-white border rounded-lg  border-purple-300 p-6 text-black shadow-xl transition-transform transform hover:scale-105">
             <div className="flex justify-center mb-4">
               <FaEnvelope className="text-5xl text-purple-400" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Messaging Features</h3>
-            <p className="text-sm">Directly message potential partners to plan collaborations and discuss ideas</p>
+            <h3 className="text-xl font-bold mb-2 text-center">Messaging Features</h3>
+            <p className="text-sm text-center">Directly message potential partners to plan collaborations and discuss ideas</p>
           </div>
         </div>
-
-       
 
         {/* Social Media Section */}
         <div className="flex flex-col items-center">
           <h3 className="text-lg font-semibold mb-4 opacity-80">Follow us on social media</h3>
           <div className="flex justify-center space-x-6">
-            
-            <a href="http://tiktok.com/@hyperbud" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
+
+            <Link href="http://tiktok.com/@hyperbud" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
               <FaTiktok className="text-black hover:text-purple-500 transition-colors duration-300 text-3xl transform hover:scale-110" />
-            </a>
-            <a href="https://www.instagram.com/hyper_buds?igsh=MTJ1cTE4NjE5eGdhMQ==" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+            </Link>
+            <Link href="https://www.instagram.com/hyper_buds?igsh=MTJ1cTE4NjE5eGdhMQ==" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
               <FaInstagram className="text-pink-400 hover:text-purple-500 transition-colors duration-300 text-3xl transform hover:scale-110" />
-            </a>
+            </Link>
+            <Link href="https://www.linkedin.com/company/hyperbuds" target="_blank" rel="noopener noreferrer">
+              <FaLinkedin className="text-blue-600 hover:text-blue-800 transition-colors duration-300 text-3xl transform hover:scale-110" />
+            </Link>
           </div>
         </div>
       </div>
+
     </div>
   );
 };

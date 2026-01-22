@@ -27,7 +27,7 @@ export function ContactFooter() {
                   transition={{ duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
                >
                   <motion.h2
-                     className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400 md:text-5xl"
+                     className="text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-orange-400 md:text-5xl"
                      initial={{ opacity: 0, y: 20 }}
                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                      transition={{ duration: 0.8, delay: 0.2 }}
@@ -80,7 +80,7 @@ export function ContactFooter() {
                      transition={{ duration: 0.8, delay: 0.6 }}
                   >
                      <div className="flex items-start space-x-4">
-                        <MapPin className="flex-shrink-0 mt-1 w-6 h-6 text-purple-400" />
+                        <MapPin className="shrink-0 mt-1 w-6 h-6 text-purple-400" />
                         <div>
                            <p className="mb-1 font-medium text-white">Office Address</p>
                            <p className="text-gray-400">
@@ -90,7 +90,7 @@ export function ContactFooter() {
                      </div>
 
                      <div className="flex items-start space-x-4">
-                        <Mail className="flex-shrink-0 mt-1 w-6 h-6 text-purple-400" />
+                        <Mail className="shrink-0 mt-1 w-6 h-6 text-purple-400" />
                         <div>
                            <p className="mb-1 font-medium text-white">Email Address</p>
                            <p className="text-gray-400">
@@ -100,7 +100,7 @@ export function ContactFooter() {
                      </div>
 
                      <div className="flex items-start space-x-4">
-                        <Phone className="flex-shrink-0 mt-1 w-6 h-6 text-purple-400" />
+                        <Phone className="shrink-0 mt-1 w-6 h-6 text-purple-400" />
                         <div>
                            <p className="mb-1 font-medium text-white">Phone Number</p>
                            <p className="text-gray-400">
