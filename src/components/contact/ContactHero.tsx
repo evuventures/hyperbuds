@@ -8,7 +8,7 @@ export function ContactHero() {
    const isInView = useInView(ref, { once: false, amount: 0.3 });
 
    return (
-      <section ref={ref} className="overflow-hidden relative px-6 pt-32 pb-20 bg-gradient-to-br from-purple-500 to-blue-600 dark:from-purple-600 dark:to-blue-700 h-screen flex items-center">
+      <section ref={ref} className="overflow-hidden relative px-6 pt-32 pb-20 bg-linear-to-br from-purple-500 to-blue-600 dark:from-purple-600 dark:to-blue-700 h-screen flex items-center">
          {/* Decorative Elements */}
          <div className="absolute inset-0 pointer-events-none">
             {/* Animated wavy lines */}
@@ -358,7 +358,7 @@ export function ContactHero() {
                </h1>
 
                <motion.div
-                  className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 mx-auto mb-8"
+                  className="w-24 h-1 bg-linear-to-r from-yellow-400 to-orange-400 mx-auto mb-8"
                   initial={{ width: 0 }}
                   animate={isInView ? { width: 96 } : { width: 0 }}
                   transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
