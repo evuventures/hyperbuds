@@ -18,7 +18,7 @@ const benefits = [
     description: "As much responsibility as you are willing to take and show excellence.",
   },
   {
-    title: "Don&apos;t stop learning",
+    title: "Continuous learning",
     description: "An atmosphere where learning is always on the to-do list.",
   },
   {
@@ -71,7 +71,7 @@ export function WhyJoinUs() {
               }}
             >
               <div
-                className="flex-shrink-0 mt-0.5 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center"
+                className="shrink-0 mt-0.5 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center"
                 aria-hidden
               >
                 <Check className="w-3.5 h-3.5 text-purple-600" strokeWidth={2.5} />

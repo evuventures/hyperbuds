@@ -20,12 +20,13 @@ function Navbar() {
 
   const menuItems = [
     { name: 'Home', href: '/' },
-    //{ name: 'Careers', href: '/careers' },
+   
     { name: 'About', href: '/about' },
     // { name: 'Features', href: '/features' },
     // { name: 'How it works', href: '/how-it-works' },
     // { name: 'Blogs', href: '/blogs' },
-    { name: 'Contact', href: '/contact' }
+    { name: 'Contact', href: '/contact' },
+     { name: 'Careers', href: '/careers' }
   ];
 
   return (
