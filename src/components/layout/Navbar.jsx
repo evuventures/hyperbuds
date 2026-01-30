@@ -20,6 +20,7 @@ function Navbar() {
 
   const menuItems = [
     { name: 'Home', href: '/' },
+    { name: 'Careers', href: '/careers' },
     { name: 'About', href: '/about' },
     // { name: 'Features', href: '/features' },
     // { name: 'How it works', href: '/how-it-works' },
@@ -42,19 +43,16 @@ function Navbar() {
 
       <div className="flex relative justify-between items-center px-6 py-4 md:px-16 lg:px-32">
         {/* Logo */}
-        <motion.div
-          className="logo"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.2 }}
-        >
-          <Image
+        <Link href='/'>
+        <Image
             src="/images/HyperBuds (3).png"
             alt="Logo"
             width={192}
             height={48}
             className="w-32 h-auto lg:w-48"
           />
-        </motion.div>
+        </Link>
+       
 
         {/* Desktop Menu */}
         <div className="hidden gap-12 items-center md:flex">
