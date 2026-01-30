@@ -17,7 +17,7 @@ export function CareersHero() {
       ref={ref}
       className="relative overflow-hidden px-6 pt-32 pb-24 bg-gradient-to-br from-purple-500 to-blue-600 dark:from-purple-600 dark:to-blue-700 min-h-[70vh] flex items-center"
     >
-      {/* Decorative Elements */}
+      {/* Decorative Elements. */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute top-20 right-20 w-6 h-6 rounded-lg bg-white/20"
