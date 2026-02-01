@@ -3,19 +3,19 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import { getGmailComposeUrl, CAREERS_EMAIL } from "@/lib/careers/jobs";
 
-const CAREERS_EMAIL = "info@hyperbuds.com";
 const JOIN_US_SUBJECT = "Career Inquiry – Join HyperBuds";
 
 export function CareersHero() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.3 });
-  const mailtoUrl = `mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent(JOIN_US_SUBJECT)}`;
+  const composeUrl = getGmailComposeUrl(CAREERS_EMAIL, JOIN_US_SUBJECT);
 
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden px-6 pt-32 pb-24 bg-gradient-to-br from-purple-500 to-blue-600 dark:from-purple-600 dark:to-blue-700 min-h-[70vh] flex items-center"
+      className="relative overflow-hidden px-6 pt-32 pb-24 bg-linear-to-br from-purple-500 to-blue-600 dark:from-purple-600 dark:to-blue-700 min-h-[70vh] flex items-center"
     >
       {/* Decorative Elements. */}
       <div className="absolute inset-0 pointer-events-none">
@@ -105,6 +105,16 @@ export function CareersHero() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
+          <Link
+            href={composeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-base font-semibold text-white rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30"
+            aria-label="Open Gmail to apply"
+          >
+            Join Us
+            <span aria-hidden> →</span>
+          </Link>
         </motion.div>
       </div>
     </section>
