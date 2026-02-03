@@ -38,27 +38,24 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
   const composeUrl = getGmailComposeUrl(CAREERS_EMAIL, applySubject);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-black">
       <div className="mx-auto max-w-4xl px-6 pt-32 pb-20">
         <Link
           href="/careers"
-          className="inline-flex items-center gap-1 text-purple-600 hover:text-purple-700 font-medium mb-8 transition-colors"
+          className="inline-flex items-center gap-1 text-purple-400 hover:text-purple-300 font-medium mb-8 transition-colors"
           aria-label="Back to Careers"
         >
           <span aria-hidden>←</span> Careers
         </Link>
 
-        <article className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+        <article className="bg-black rounded-2xl border border-gray-800 shadow-sm overflow-hidden">
           <div className="p-8 md:p-12">
-            <h1 className="text-3xl font-bold text-gray-800 md:text-4xl mb-4">
+            <h1 className="text-3xl font-bold text-white md:text-4xl mb-4">
               {job.title}
             </h1>
-            <div className="flex flex-wrap gap-4 text-gray-600 mb-8">
+            <div className="flex flex-wrap gap-4 text-gray-400 mb-8">
               <span>Type: {job.type}</span>
               <span>Location: {job.location}</span>
-              {job.postedDate && (
-                <span>Posted: {job.postedDate}</span>
-              )}
               {job.duration && (
                 <span>Duration: {job.duration}</span>
               )}
@@ -69,19 +66,19 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
 
             {job.role && (
               <section className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-800 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   Role
                 </h2>
-                <p className="text-gray-600 leading-relaxed">{job.role}</p>
+                <p className="text-gray-300 leading-relaxed">{job.role}</p>
               </section>
             )}
 
             {job.responsibilities && job.responsibilities.length > 0 && (
               <section className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-800 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   Responsibilities
                 </h2>
-                <ul className="list-disc list-inside space-y-2 text-gray-600">
+                <ul className="list-disc list-inside space-y-2 text-gray-300">
                   {job.responsibilities.map((r) => (
                     <li key={r}>{r}</li>
                   ))}
@@ -91,10 +88,10 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
 
             {job.requirements && job.requirements.length > 0 && (
               <section className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-800 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   Requirements
                 </h2>
-                <ul className="list-disc list-inside space-y-2 text-gray-600">
+                <ul className="list-disc list-inside space-y-2 text-gray-300">
                   {job.requirements.map((r) => (
                     <li key={r}>{r}</li>
                   ))}
@@ -104,10 +101,10 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
 
             {job.qualifications && job.qualifications.length > 0 && (
               <section className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-800 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   Qualifications
                 </h2>
-                <ul className="list-disc list-inside space-y-2 text-gray-600">
+                <ul className="list-disc list-inside space-y-2 text-gray-300">
                   {job.qualifications.map((q) => (
                     <li key={q}>{q}</li>
                   ))}
@@ -117,10 +114,10 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
 
             {job.whatYouGain && job.whatYouGain.length > 0 && (
               <section className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-800 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   What You&apos;ll Gain
                 </h2>
-                <ul className="list-disc list-inside space-y-2 text-gray-600">
+                <ul className="list-disc list-inside space-y-2 text-gray-300">
                   {job.whatYouGain.map((g) => (
                     <li key={g}>{g}</li>
                   ))}
@@ -128,14 +125,14 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
               </section>
             )}
 
-            <section className="mt-10 pt-8 border-t border-gray-200">
-              <p className="text-gray-700 mb-4">
+            <section className="mt-10 pt-8 border-t border-gray-800">
+              <p className="text-gray-300 mb-4">
                 To apply, send your CV and cover letter to:{" "}
                 <a
                   href={composeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-purple-600 hover:text-purple-700 underline"
+                  className="font-semibold text-purple-400 hover:text-purple-300 underline"
                 >
                   {CAREERS_EMAIL}
                 </a>
@@ -152,13 +149,15 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
           </div>
         </article>
 
+        {/* Safety disclaimer – commented out for now
         <p className="mt-6 text-sm text-gray-500 text-center">
           To ensure your safety, only apply for positions listed on our official
           careers page. Be wary of interview requests via Teams or text, as these
           may be scams. HyperBuds will only contact you from{" "}
-          <span className="font-medium">@{CAREERS_EMAIL.split("@")[1]}</span>{" "}
+          <span className="font-medium text-gray-400">@{CAREERS_EMAIL.split("@")[1]}</span>{" "}
           email addresses.
         </p>
+        */}
       </div>
     </div>
   );

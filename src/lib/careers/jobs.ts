@@ -37,7 +37,7 @@ export const jobs: Job[] = [
     title: "UI/UX Designer",
     type: "Full Time",
     location: "Remote",
-    postedDate: "Oct 2025",
+    postedDate: "Ongoing",
     category: "design",
     role:
       "We are looking for a UI/UX Designer to help shape our platform and create a modern, creator-focused experience that empowers collaboration.",
@@ -69,7 +69,7 @@ export const jobs: Job[] = [
     title: "Graphic Designer",
     type: "Full Time",
     location: "Remote",
-    postedDate: "Oct 2025",
+    postedDate: "Ongoing",
     category: "design",
     role:
       "We are looking for a Graphic Designer to create visual content that resonates with creators, influencers, and businesses using our AI-powered platform.",
@@ -98,7 +98,7 @@ export const jobs: Job[] = [
     title: "Full Stack Developer",
     type: "Full Time",
     location: "Remote",
-    postedDate: "Oct 2025",
+    postedDate: "Ongoing",
     category: "development",
     role:
       "We are seeking a Full Stack Developer to help build and scale our AI-powered collaboration platform. Experience with no-code and low-code tools is a plus.",
@@ -129,7 +129,7 @@ export const jobs: Job[] = [
     title: "DevOps Internship",
     type: "Internship",
     location: "Remote",
-    postedDate: "Oct 2025",
+    postedDate: "Ongoing",
     category: "development",
     role:
       "We're seeking a motivated DevOps Intern to support our platform launch. This is an unpaid role initially, with paid opportunities once funding is secured.",
@@ -163,7 +163,7 @@ export const jobs: Job[] = [
     title: "Marketing",
     type: "Full Time / Internship",
     location: "Remote",
-    postedDate: "Aug 2025",
+    postedDate: "Ongoing",
     category: "business",
     role:
       "We are searching for a Marketing team member to help grow HyperBuds. If you are looking for an opportunity to flex your marketing chops and get hands-on experience, this is for you. If your efforts lead to project funding you may be in line for a paid role as well as possible equity.",
@@ -188,7 +188,7 @@ export const jobs: Job[] = [
     title: "Fund Raising",
     type: "Contract",
     location: "Remote",
-    postedDate: "Aug 2025",
+    postedDate: "Ongoing",
     category: "business",
     role:
       "This is a contract basis (remote) role for a Fundraiser at HyperBuds, an AI-powered collaboration platform. The Fundraiser will be responsible for developing and implementing fundraising strategies, seeking out potential investors and donors, and maintaining relationships to meet performance-based pay targets.",
@@ -212,7 +212,7 @@ export const jobs: Job[] = [
     title: "Social Media Manager",
     type: "Full Time",
     location: "Remote",
-    postedDate: "Oct 2025",
+    postedDate: "Ongoing",
     category: "business",
     role:
       "We are looking for a Social Media Manager to build and grow our presence across platforms, engaging with creators, influencers, and businesses in the HyperBuds community.",
@@ -242,7 +242,7 @@ export const jobs: Job[] = [
     title: "Grantwriter",
     type: "Contract",
     location: "Remote",
-    postedDate: "Jul 2025",
+    postedDate: "Ongoing",
     category: "business",
     role:
       "Looking for a grant and RFP application writer. We pay on a rolling basis based on the amount you successfully bring in. We are hoping to find someone confident in their expertise who is open to this payment structure.",
