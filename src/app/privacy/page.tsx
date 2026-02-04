@@ -63,8 +63,8 @@ export default function PrivacyPolicy() {
         </ul>
         <p>
           Requests can be submitted to{' '}
-          <a href="mailto:support@hyperbuds.com" className="text-blue-600 underline">
-            support@hyperbuds.com
+          <a href="mailto:info@hyperbuds.com" className="text-blue-600 underline">
+            info@hyperbuds.com
           </a>.
           We will respond within a reasonable timeframe consistent with applicable U.S. law.
         </p>

@@ -69,8 +69,8 @@ export default function TermsAndConditions() {
           [Your Georgia or Florida Business Address]
           <br />
           📧{' '}
-          <a href="mailto:support@hyperbuds.com" className="text-blue-600 underline">
-            support@hyperbuds.com
+          <a href="mailto:info@hyperbuds.com" className="text-blue-600 underline">
+            info@hyperbuds.com
           </a>
         </p>
 

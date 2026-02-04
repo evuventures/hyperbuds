@@ -8,7 +8,7 @@ const faqs = {
     { question: 'Who can use HyperBuds?', answer: 'Anyone from students to enterprise teams can use HyperBuds.' },
     { question: 'What services does HyperBuds provide?', answer: 'Real-time collaboration tools, task management, and team insights.' },
     { question: 'Can I integrate HyperBuds with other tools?', answer: 'Yes, integrations with Slack, Google Drive, and more are supported.' },
-    { question: 'How can I contact support?', answer: 'Via live chat, support@hyperbuds.com, or the help center.' },
+    { question: 'How can I contact support?', answer: 'Via live chat, info@hyperbuds.com, or the help center.' },
     { question: 'What is your average response time?', answer: 'Most queries are answered within 24 hours.' },
     { question: 'How is my data protected?', answer: 'We use encryption, secure servers, and comply with GDPR.' },
     { question: 'Can I delete my account and data?', answer: 'Yes, you can request data deletion from your account settings.' },
@@ -18,7 +18,7 @@ const faqs = {
     { question: 'Can I integrate HyperBuds with other tools?', answer: 'Yes, integrations with Slack, Google Drive, and more are supported.' },
   ],
   Support: [
-    { question: 'How can I contact support?', answer: 'Via live chat, support@hyperbuds.com, or the help center.' },
+    { question: 'How can I contact support?', answer: 'Via live chat, info@hyperbuds.com, or the help center.' },
     { question: 'What is your average response time?', answer: 'Most queries are answered within 24 hours.' },
   ],
   'Privacy/Policy': [
