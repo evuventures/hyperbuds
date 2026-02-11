@@ -113,7 +113,7 @@ export function ContactForm() {
 
                      {/* Submit Button */}
                      <Link
-                        href="mailto:hyperbuds1@gmail.com"
+                        href="mailto:info@hyperbuds.com"
                         type="submit"
                         className="w-full bg-linear-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center space-x-2 group"
                         

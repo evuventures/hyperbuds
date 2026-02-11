@@ -125,7 +125,7 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-3">Contact</h3>
             <ul className="space-y-2 text-gray-400">
-              <Link href="mailto:info@hyperbuds@gmail.com">info@hyperbuds.com</Link>
+              <Link href="mailto:info@hyperbuds.com">info@hyperbuds.com</Link>
 
               <li>
                 <div className="flex space-x-4 mt-2">
