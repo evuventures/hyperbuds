@@ -65,8 +65,9 @@ export default function TermsAndConditions() {
         <h2 className="text-2xl font-semibold mt-8">6. Contact</h2>
         <p>
           HyperBuds Inc.
+        {/* Replace with actual business address 
           <br />
-          [Your Georgia or Florida Business Address]
+          [Your Georgia or Florida Business Address]*/}
           <br />
           📧{' '}
           <a href="mailto:info@hyperbuds.com" className="text-blue-600 underline">
