@@ -197,7 +197,7 @@ const Testimonial = () => {
               whileHover={{ x: "100%" }}
               transition={{ duration: 0.6 }}
             />
-            <Link href="/waitlist" className="relative z-10">Join Our Community</Link>
+            <Link href="https://app.hyperbuds.com" className="relative z-10">Join Our Community</Link>
           </motion.button>
         </motion.div>
 

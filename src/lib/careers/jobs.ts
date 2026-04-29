@@ -155,8 +155,7 @@ export const jobs: Job[] = [
       "Flexible, remote schedule",
       "Potential for full-time employment after funding",
     ],
-    commitment: "15–20 hours/week, 3–6 months",
-    duration: "Unpaid (paid transition possible)",
+    
   },
   {
     slug: "marketing",
@@ -181,7 +180,7 @@ export const jobs: Job[] = [
       "Direct exposure to growth strategies",
       "Remote and flexible environment",
     ],
-    duration: "Internship initially; paid role upon formal onboarding",
+  
   },
   {
     slug: "fund-raising",
@@ -205,7 +204,7 @@ export const jobs: Job[] = [
       "Exposure to the startup and investor ecosystem",
       "Remote and flexible schedule",
     ],
-    duration: "Pay based on achieved results only; no hourly compensation",
+    
   },
   {
     slug: "social-media-manager",
@@ -261,7 +260,7 @@ export const jobs: Job[] = [
       "Exposure to patented SAAS ventures",
       "Remote and flexible schedule",
     ],
-    duration: "Performance-based, rolling",
+   
   },
 ];
 

@@ -175,7 +175,7 @@ const Hero = ({ heading, subheading, ratings }) => {
             <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-blue-700 transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-800" />
             <div className="absolute inset-0 bg-linear-to-r from-black/0 to-black/0 group-hover:from-black/10 group-hover:to-black/10 transition-all duration-300" />
             <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
-            <Link href="/waitlist" className="relative z-10 flex items-center justify-center gap-2">
+            <Link href="https://app.hyperbuds.com" className="relative z-10 flex items-center justify-center gap-2">
               Get Started
               <motion.span
                 className="inline-block"

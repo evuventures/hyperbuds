@@ -9,7 +9,7 @@ const Prefooter = () => {
         Join 10,000+ creators getting matched instantly!
       </h2>
 
-      <Link href="/waitlist" className="bg-white text-purple-500 font-semibold py-3 px-8 sm:px-4 sm:py-2 rounded-full transition w-full sm:w-auto">
+      <Link href="https://app.hyperbuds.com" className="bg-white text-purple-500 font-semibold py-3 px-8 sm:px-4 sm:py-2 rounded-full transition w-full sm:w-auto">
         Get Matched
       </Link>
     </section>

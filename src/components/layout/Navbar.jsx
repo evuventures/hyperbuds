@@ -9,7 +9,6 @@ function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
 
-  // Handle scroll effect
   React.useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -20,13 +19,8 @@ function Navbar() {
 
   const menuItems = [
     { name: 'Home', href: '/' },
-   
     { name: 'About', href: '/about' },
-    // { name: 'Features', href: '/features' },
-    // { name: 'How it works', href: '/how-it-works' },
-    // { name: 'Blogs', href: '/blogs' },
     { name: 'Contact', href: '/contact' },
-     { name: 'Careers', href: '/careers' }
   ];
 
   return (
@@ -45,7 +39,7 @@ function Navbar() {
       <div className="flex relative justify-between items-center px-6 py-4 md:px-16 lg:px-32">
         {/* Logo */}
         <Link href='/'>
-        <Image
+          <Image
             src="/images/HyperBuds (3).png"
             alt="Logo"
             width={192}
@@ -53,10 +47,9 @@ function Navbar() {
             className="w-32 h-auto lg:w-48"
           />
         </Link>
-       
 
-        {/* Desktop Menu */}
-        <div className="hidden gap-12 items-center md:flex">
+        {/* Desktop Nav Links - absolutely centered */}
+        <div className="hidden absolute left-1/2 -translate-x-1/2 items-center md:flex">
           <ul className="flex gap-8 p-0 m-0 list-none">
             {menuItems.map((item, index) => (
               <motion.li
@@ -70,17 +63,17 @@ function Navbar() {
                   className="relative text-base font-medium text-gray-700 transition-all duration-300 hover:text-purple-600 group"
                 >
                   {item.name}
-                  {/* Animated underline */}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:w-full" />
-                  {/* Hover glow effect */}
                   <span className="absolute inset-0 bg-linear-to-r rounded-lg transition-all duration-300 from-purple-500/0 to-blue-700/0 group-hover:from-purple-500/10 group-hover:to-blue-700/10 -z-10" />
                 </Link>
               </motion.li>
             ))}
           </ul>
+        </div>
 
-          {/* Enhanced Get Started Button */}
-          <Link href='./waitlist'>
+        {/* Get Started Button - stays on the right */}
+        <div className="hidden md:flex">
+          <Link href='https://app.hyperbuds.com'>
             <motion.button
               className="overflow-hidden relative px-8 py-3 font-semibold text-white rounded-full shadow-lg transition-all duration-300 group hover:shadow-2xl"
               whileHover={{ scale: 1.05 }}
@@ -89,13 +82,8 @@ function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8 }}
             >
-              {/* Background gradient */}
               <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-blue-700 transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-800" />
-
-              {/* Animated shimmer effect */}
               <div className="absolute inset-0 bg-linear-to-r from-transparent to-transparent transition-transform duration-700 -translate-x-full -skew-x-12 via-white/20 group-hover:translate-x-full" />
-
-              {/* Button text */}
               <span className="flex relative z-10 gap-2 justify-center items-center">
                 Get Started
                 <motion.span
@@ -110,7 +98,7 @@ function Navbar() {
           </Link>
         </div>
 
-        {/* Enhanced Hamburger Icon */}
+        {/* Hamburger Icon */}
         <div className="md:hidden">
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
@@ -126,12 +114,12 @@ function Navbar() {
                 className="w-6 h-0.5 bg-purple-600 rounded-full"
                 variants={{
                   closed: { rotate: 0, y: 0 },
-                  open: { rotate: 45, y: 0 }
+                  open: { rotate: 45, y: 8 }
                 }}
                 transition={{ duration: 0.3 }}
               />
               <motion.span
-                className="w-6 h-0.5 bg-purple-600 rounded-full mt-1"
+                className="w-6 h-0.5 bg-purple-600 rounded-full mt-1.5"
                 variants={{
                   closed: { opacity: 1 },
                   open: { opacity: 0 }
@@ -139,7 +127,7 @@ function Navbar() {
                 transition={{ duration: 0.3 }}
               />
               <motion.span
-                className="w-6 h-0.5 bg-purple-600 rounded-full mt-1"
+                className="w-6 h-0.5 bg-purple-600 rounded-full mt-1.5"
                 variants={{
                   closed: { rotate: 0, y: 0 },
                   open: { rotate: -45, y: -8 }
@@ -151,7 +139,7 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Enhanced Mobile Dropdown Menu */}
+      {/* Mobile Dropdown Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -161,9 +149,7 @@ function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
-            {/* Background gradient */}
             <div className="absolute inset-0 bg-linear-to-b from-purple-500/5 to-blue-700/5" />
-
             <div className="relative px-6 py-6">
               <div className="flex flex-col gap-6 items-center">
                 {menuItems.map((item, index) => (
@@ -185,18 +171,20 @@ function Navbar() {
                 ))}
 
                 {/* Mobile Get Started Button */}
-                <motion.button
-                  className="group relative px-8 py-3 text-white rounded-full font-semibold overflow-hidden shadow-lg mt-4 min-w-50"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-blue-700 transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-800" />
-                  <div className="absolute inset-0 bg-linear-to-r from-transparent to-transparent transition-transform duration-700 -translate-x-full -skew-x-12 via-white/20 group-hover:translate-x-full" />
-                  <span className="relative z-10">Get Started</span>
-                </motion.button>
+                <Link href='https://app.hyperbuds.com'>
+                  <motion.button
+                    className="group relative px-8 py-3 text-white rounded-full font-semibold overflow-hidden shadow-lg mt-4 min-w-50"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <div className="absolute inset-0 bg-linear-to-r from-purple-500 to-blue-700 transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-800" />
+                    <div className="absolute inset-0 bg-linear-to-r from-transparent to-transparent transition-transform duration-700 -translate-x-full -skew-x-12 via-white/20 group-hover:translate-x-full" />
+                    <span className="relative z-10">Get Started</span>
+                  </motion.button>
+                </Link>
               </div>
             </div>
           </motion.div>
